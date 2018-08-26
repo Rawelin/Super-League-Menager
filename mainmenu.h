@@ -9,11 +9,15 @@
 #include "choseteam.h"
 #include "options.h"
 #include "gamedialog.h"
+#include "choseteam.h"
+
+class ChoseTeam;
 
 
 namespace Ui {
 class MainMenu;
 }
+
 
 class MainMenu : public QDialog
 {
@@ -24,6 +28,7 @@ public:
     ~MainMenu();
     void setGraphics();
     void mouseTracking();
+
 
 private slots:
 
@@ -37,7 +42,9 @@ private slots:
 
 private:
     Ui::MainMenu *ui;
+    //ChoseTeam choseTeam;
     QMediaPlayer music;
+
 
 protected:
     void mouseMoveEvent(QMouseEvent *event);

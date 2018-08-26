@@ -62,8 +62,7 @@ public:
     void saveData();
     void loadData();
     void memeoryHarvester();
-    void mainMenuOpen();
-    void mainMenuHide();
+
 };
 
 #endif // CONTAINER_H

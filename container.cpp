@@ -91,17 +91,7 @@ void Container::memeoryHarvester()
     delete set_multimedia;
 }
 
-void Container::mainMenuOpen()
-{
-    MainMenu mainMenu;
-    mainMenu.exec();
-}
 
-void Container::mainMenuHide()
-{
-    MainMenu mainMenu;
-    mainMenu.close();
-}
 
 
 

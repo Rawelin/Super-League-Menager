@@ -9,6 +9,7 @@ MainMenu::MainMenu(QWidget *parent) :
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
+    //ui->stackedWidget->insertWidget(0, choseteam);
 
     setWindowFlags(Qt::WindowTitleHint);
     setWindowFlags(Qt::FramelessWindowHint);
@@ -68,7 +69,8 @@ void MainMenu::on_newGame_clicked()
 
 void MainMenu::on_abaut_clicked()
 {
-   container->music_player->stop();
+  // container->music_player->stop();
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainMenu::on_option_clicked()
