@@ -45,8 +45,10 @@ void RemovePlayer::setGraphics()
 
     ui->tableWidget->setFrameShape(QFrame::NoFrame);
 
-    ui->pushButton->setStyleSheet("background-color : rgba(255, 255, 255, 30);");
-    ui->editchooseteam->setStyleSheet("background-color : rgba(255, 255, 255, 10);");
+    QString style = "background-color: rgba(0, 127, 255, 30);";
+
+    ui->pushButton->setStyleSheet(style);
+    ui->editchooseteam->setStyleSheet(style);
 }
 void RemovePlayer::squad()
 {
@@ -131,9 +133,11 @@ void RemovePlayer::squad()
 
 void RemovePlayer::on_editchooseteam_clicked()
 {
-    EditChooseTeam editchoseteam(0, 2);
-    RemovePlayer::close();
-    editchoseteam.exec();
+    //EditChooseTeam editchoseteam(0, 2);
+    //RemovePlayer::close();
+    //editchoseteam.exec();
+
+    emit dialogClicked();
 }
 
 void RemovePlayer::on_pushButton_clicked()

@@ -2,7 +2,7 @@
 #define LEAGUE_H
 
 #include <QWidget>
-#include "matchinterface.h"
+
 
 
 class League

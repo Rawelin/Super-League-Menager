@@ -25,11 +25,26 @@
   <property name="windowTitle">
    <string>Edycja</string>
   </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1921</width>
+     <height>1071</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="page"/>
+   <widget class="QWidget" name="page_2"/>
+  </widget>
   <widget class="QPushButton" name="add">
    <property name="geometry">
     <rect>
-     <x>820</x>
-     <y>260</y>
+     <x>660</x>
+     <y>60</y>
      <width>300</width>
      <height>60</height>
     </rect>
@@ -92,8 +107,8 @@
   <widget class="QPushButton" name="edit">
    <property name="geometry">
     <rect>
-     <x>820</x>
-     <y>400</y>
+     <x>360</x>
+     <y>60</y>
      <width>300</width>
      <height>60</height>
     </rect>
@@ -153,11 +168,75 @@
     <string>Edytuj</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="option">
+   <property name="geometry">
+    <rect>
+     <x>1260</x>
+     <y>60</y>
+     <width>300</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>300</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>120</red>
+         <green>120</green>
+         <blue>120</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nyala</family>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;&lt;</string>
+   </property>
+  </widget>
   <widget class="QPushButton" name="remove">
    <property name="geometry">
     <rect>
-     <x>820</x>
-     <y>330</y>
+     <x>960</x>
+     <y>60</y>
      <width>300</width>
      <height>60</height>
     </rect>
@@ -215,70 +294,6 @@
    </property>
    <property name="text">
     <string>Usun</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="option">
-   <property name="geometry">
-    <rect>
-     <x>820</x>
-     <y>470</y>
-     <width>300</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>300</width>
-     <height>60</height>
-    </size>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>120</red>
-         <green>120</green>
-         <blue>120</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="font">
-    <font>
-     <family>Nyala</family>
-     <pointsize>16</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Opcje</string>
    </property>
   </widget>
  </widget>

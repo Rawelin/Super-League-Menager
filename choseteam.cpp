@@ -16,10 +16,10 @@ ChoseTeam::ChoseTeam(QDialog *parent) :QDialog(parent),
      mouseTracking();
      setImages();
 
-    // container->music_player->stop();
-     container->music_player->setPlayer();
-     container->music_player->setTrack(5);
-    // container->music_player->start();
+     // container->music_player->stop();
+     // container->music_player->setPlayer();
+     // container->music_player->setTrack(5);
+    //  container->music_player->start();
 
      showteamstats = new ShowTeamStats(this);
      showplayerstats = new ShowPlayerStats(this);
@@ -64,8 +64,6 @@ void ChoseTeam::setImages()
     container->functions->setIcon(container->teams[13].getLogo(), ui->pogon, "Schalke 04");
     container->functions->setIcon(container->teams[14].getLogo(), ui->wisla_plock, "Manchester United");
     container->functions->setIcon(container->teams[15].getLogo(), ui->zaglebie, "FC Napoli");
-
-    ui->goback->setStyleSheet("background-color: rgba(0, 127, 255, 30);");
 }
 
 void ChoseTeam::mouseTracking()
@@ -88,7 +86,6 @@ void ChoseTeam::mouseTracking()
     ui->pogon->setMouseTracking(true);
     ui->wisla_plock->setMouseTracking(true);
     ui->zaglebie->setMouseTracking(true);
-    ui->goback->setMouseTracking(true);
 }
 
 void ChoseTeam::setAnimation()
@@ -99,12 +96,17 @@ void ChoseTeam::setAnimation()
     z = ui->real->pos().y() - 120;
 
 
-    for(i = 0; i <= 700; i+= 3)
-    {
-         showteamstats->move(x , y + i);
-         showplayerstats->move(v+ i, z);
-         container->functions->delay(1);
-    }
+    showteamstats->move(x , y + 700);
+    showplayerstats->move(v+ 700, z);
+    container->functions->delay(1);
+
+
+   // for(i = 0; i <= 700; i+= 3)
+   // {
+   //      showteamstats->move(x , y + i);
+   //     showplayerstats->move(v+ i, z);
+   //      container->functions->delay(1);
+   // }
 }
 
 void ChoseTeam::getStats(QRect teamRect, int id)
@@ -125,11 +127,13 @@ void ChoseTeam::getStats(QRect teamRect, int id)
 void ChoseTeam::setUserData(int id)
 {
     container->userData->setId(id);
-    container->music_player->stop();
+    //container->music_player->stop();
 
-    UserDataDialog userdatadialog(this);
+    //UserDataDialog userdatadialog(this);
    // ChoseTeam::close();
-    userdatadialog.exec();
+   // userdatadialog.exec();
+
+     emit dialogClickedGo();
 }
 
 
@@ -158,8 +162,6 @@ void ChoseTeam::highLight()
     QRect wisla_plockIco = ui->wisla_plock->geometry();
     QRect zaglebie_ico = ui->zaglebie->geometry();
 
-    QRect gobackIco = ui->goback->geometry();
-
     QString highlight = "background-color: rgba(255, 255, 255, 100);";
     QString normal = "background-color: rgba(255, 255, 255, 10);";
     QString normal2 = "background-color: rgba(255, 255, 255, 30);";
@@ -180,7 +182,6 @@ void ChoseTeam::highLight()
     container->functions->setHighLight(pogonIco, ui->pogon, highlight, normal);
     container->functions->setHighLight(wisla_plockIco, ui->wisla_plock, highlight, normal);
     container->functions->setHighLight(zaglebie_ico, ui->zaglebie, highlight, normal);
-    container->functions->setHighLight(gobackIco, ui->goback, highlight, normal2);
 
     /*getStats(jagieloniaIco, 0);
     getStats(lechiaIco, 1);
@@ -291,10 +292,13 @@ void ChoseTeam::highLight()
 }
 void ChoseTeam::on_goback_clicked()
 {
+   // container->music_player->setTrack(5);
     container->music_player->stop();
-    MainMenu mainmenu;
-    ChoseTeam::close();
-    mainmenu.exec();
+   // MainMenu mainmenu;
+    //ChoseTeam::close();
+  //  mainmenu.exec();
+
+    emit dialogClicked();
 }
 
 void ChoseTeam::on_real_clicked()
@@ -372,7 +376,9 @@ void ChoseTeam::on_wisla_plock_clicked()
 
 void ChoseTeam::on_zaglebie_clicked()
 {
-     setUserData(15);
+    setUserData(15);
 }
+
+
 
 

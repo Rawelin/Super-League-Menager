@@ -59,7 +59,8 @@ SOURCES += main.cpp\
     formations.cpp \
     setmultimedia.cpp \
     tabmenu.cpp \
-    stadium.cpp
+    stadium.cpp \
+    abaut.cpp
 
 HEADERS  += mainmenu.h \
     gamewindow.h \
@@ -105,7 +106,8 @@ HEADERS  += mainmenu.h \
     formations.h \
     setmultimedia.h \
     tabmenu.h \
-    stadium.h
+    stadium.h \
+    abaut.h
 
 FORMS    += mainmenu.ui \
     gamewindow.ui \
@@ -134,7 +136,8 @@ FORMS    += mainmenu.ui \
     showteamstats.ui \
     showplayerstats.ui \
     userdatadialog.ui \
-    tabmenu.ui
+    tabmenu.ui \
+    abaut.ui
 
 RESOURCES += \
     resource.qrc

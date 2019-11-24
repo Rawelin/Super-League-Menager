@@ -2,7 +2,6 @@
 #define REMOVEPLAYER_H
 
 #include <QDialog>
-#include "editchooseteam.h"
 #include "serialization.h"
 #include "player.h"
 
@@ -38,6 +37,9 @@ private:
     unsigned int maximum_size;
     int squad_number;
     int formation_color;
+
+signals:
+    void dialogClicked();
 };
 
 #endif // REMOVEPLAYER_H

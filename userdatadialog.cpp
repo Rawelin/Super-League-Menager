@@ -9,9 +9,10 @@ UserDataDialog::UserDataDialog(QDialog *parent) :
 {
     ui->setupUi(this);
     //this->showFullScreen();
+    setGraphic();
     setWindowFlags(Qt::FramelessWindowHint);
     setWindowOpacity(0.9);
-    setGraphic();
+
 
 }
 
@@ -26,8 +27,8 @@ void UserDataDialog::setGraphic()
     palette.setBrush(QPalette::Background,*(new QBrush(*(new QPixmap("Background/back2.jpg")))));
     setPalette(palette);
 
-    ui->play->setStyleSheet("background-color: rgba(255, 255, 255, 10);");
-    ui->teamchoice->setStyleSheet("background-color: rgba(255, 255, 255, 10);");
+    ui->play->setStyleSheet("background-color: rgba(255, 255, 255, 50);");
+    ui->teamchoice->setStyleSheet("background-color: rgba(255, 255, 255, 50);");
 
     ui->frame->setStyleSheet("background-color: rgba(255, 255, 255, 10);");
     ui->dataLabel->setStyleSheet("background-color: rgba(255, 255, 255, 0);");
@@ -40,9 +41,10 @@ void UserDataDialog::setGraphic()
     ui->age->setStyleSheet("background-color: rgba(255, 255, 255, 0);");
     ui->nationality->setStyleSheet("background-color: rgba(255, 255, 255, 50);");
 
+    ui->logo->setVisible(false);
+
     int id = container->userData->getId();
     container->functions->setIcon(container->teams[id].getLogo(), ui->logo, 100, 100);
-
 }
 
 void UserDataDialog::on_play_clicked()
@@ -62,17 +64,27 @@ void UserDataDialog::on_play_clicked()
    // ContextMenu contextmenu(0, "Zatwierdzono");
    // contextmenu.exec();
 
+    //container->music_player->stop();
+    //choseteam->close();
 
-    choseteam->close();
-    GameDialog gamedialog;
-    UserDataDialog::close();
+    //container->music_player->setPlayer();
 
-    gamedialog.exec();
+    // UserDataDialog::close();
+
+   // mainMenuUi->stackedWidget->setCurrentIndex(4);
+
+   //GameDialog gamedialog;
+
+
+   //gamedialog.exec();
+    emit dialogClickedGo();
 }
 
 
 
 void UserDataDialog::on_teamchoice_clicked()
 {
-    UserDataDialog::close();
+    //UserDataDialog::close();
+
+    emit dialogClicked();
 }

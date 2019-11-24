@@ -34,6 +34,7 @@ void Container::loadDefaultData()
 
     serialization.loadTeam(set_multimedia->getDefaultDataTeams(0), teams);
 
+
     for(int i = 0; i < teams.size(); i++)
         serialization.loadSquadGame(set_multimedia->getDefaultPlayers(i), player, teams);
 
@@ -42,6 +43,10 @@ void Container::loadDefaultData()
     set_multimedia->setTeamIcon(teams);
     set_multimedia->setSavedTeamDataPath();
     set_multimedia->setStadiumData(teams);
+
+   //qSort(teams.begin(), teams.end(), [](const Team &t1, const Team &t2)->bool{
+   //                                     return ((t1.getName() > t2.getName()) );});
+
 }
 
 

@@ -2,7 +2,6 @@
 #define PLAYER_H
 
 #include <QtWidgets>
-#include "gamewindow.h"
 #include "showsquads.h"
 #include "addplayer.h"
 #include "serialization.h"

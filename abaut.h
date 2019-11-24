@@ -2,6 +2,7 @@
 #define ABAUT_H
 
 #include <QDialog>
+#include <QtWidgets>
 
 namespace Ui {
 class Abaut;
@@ -14,9 +15,22 @@ class Abaut : public QDialog
 public:
     explicit Abaut(QWidget *parent = 0);
     ~Abaut();
+    void setGraphics();
+
+private slots:
+      void highLight();
 
 private:
     Ui::Abaut *ui;
+
+signals:
+    void dialogClicked();
+
+public: Q_SIGNALS:
+     void hovered();
+
+protected:
+    void mouseMoveEvent(QMouseEvent *event);
 };
 
 #endif // ABAUT_H

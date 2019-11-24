@@ -3,8 +3,8 @@
 
 #include <QDialog>
 #include "container.h"
-#include "gamedialog.h"
 #include "choseteam.h"
+#include "gamedialog.h"
 
 namespace Ui {
 class UserDataDialog;
@@ -23,6 +23,10 @@ private slots:
 
     void on_play_clicked();
     void on_teamchoice_clicked();
+
+signals:
+    void dialogClicked();
+    void dialogClickedGo();
 
 private:
     QDialog *choseteam;

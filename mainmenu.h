@@ -9,10 +9,7 @@
 #include "choseteam.h"
 #include "options.h"
 #include "gamedialog.h"
-#include "choseteam.h"
-
-class ChoseTeam;
-
+#include "abaut.h"
 
 namespace Ui {
 class MainMenu;
@@ -28,23 +25,31 @@ public:
     ~MainMenu();
     void setGraphics();
     void mouseTracking();
-
+    Ui::MainMenu* getMainMenuUI(){return ui;}
 
 private slots:
 
+    void on_mainMenu_clicked();
     void on_newGame_clicked();
     void on_abaut_clicked();
     void on_option_clicked();
     void on_load_clicked();
     void highLight();
-
     void on_quit_clicked();
+    void bakToMainMenu();
+    void bakToChoseTeam();
+    void goToGameDialog();
+    void goToUserDataDialog();
+
 
 private:
     Ui::MainMenu *ui;
-    //ChoseTeam choseTeam;
-    QMediaPlayer music;
-
+    ChoseTeam *choseTeam;
+    GameDialog *gameDialog;
+    UserDataDialog *userDataDialog;
+    QMediaPlayer music;  
+    Abaut about;
+    Options options;
 
 protected:
     void mouseMoveEvent(QMouseEvent *event);

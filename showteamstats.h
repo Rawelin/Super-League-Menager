@@ -2,7 +2,6 @@
 #define SHOWTEAMSTATS_H
 
 #include <QDialog>
-#include "container.h"
 #include "team.h"
 
 class Team;

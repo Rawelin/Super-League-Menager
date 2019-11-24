@@ -5,7 +5,6 @@
 #include <QMessageBox>
 #include <QMouseEvent>
 #include <QEvent>
-#include "gamewindow.h"
 #include "table.h"
 #include "container.h"
 #include "usersquad.h"
@@ -13,9 +12,10 @@
 #include "data.h"
 #include "fixture.h"
 #include "match.h"
-#include "mainmenu.h"
+//#include "mainmenu.h"
 #include "container.h"
 #include "tabmenu.h"
+#include "Ui_MainMenu.h"
 
 
 namespace Ui {
@@ -63,6 +63,9 @@ protected:
 
 public: Q_SIGNALS:
     void hovered();
+
+signals:
+    void dialogClicked();
 
 };
 

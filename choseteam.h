@@ -5,13 +5,13 @@
 #include <QMediaPlayer>
 #include <QMouseEvent>
 #include <QEvent>
-#include "gamewindow.h"
-#include "mainmenu.h"
 #include "usersquad.h"
 #include "container.h"
 #include "showteamstats.h"
 #include "showplayerstats.h"
 #include "userdatadialog.h"
+//#include "mainmenu.h"
+
 
 class ShowTeamStats;
 class ShowPlayerStats;
@@ -58,6 +58,10 @@ private slots:
     void on_pogon_clicked();
     void on_wisla_plock_clicked();
     void on_zaglebie_clicked();
+
+signals:
+    void dialogClicked();
+    void dialogClickedGo();
 
 
 private:

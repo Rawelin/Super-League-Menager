@@ -2,7 +2,6 @@
 #define OPTIONS_H
 
 #include <QDialog>
-#include "mainmenu.h"
 #include "edit.h"
 
 namespace Ui {
@@ -20,10 +19,16 @@ public:
 private slots:
     void on_mainmenu_clicked();
     void on_edit_clicked();
+    void bakToMainMenu();
+
+
+signals:
+    void dialogClicked();
 
 private:
     Ui::Options *ui;
-   // QPalette *palette;
+    Edit edit;
+
 };
 
 #endif // OPTIONS_H

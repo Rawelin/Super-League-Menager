@@ -28,8 +28,8 @@
   <widget class="QPushButton" name="editchooseteam">
    <property name="geometry">
     <rect>
-     <x>1580</x>
-     <y>980</y>
+     <x>1250</x>
+     <y>120</y>
      <width>300</width>
      <height>60</height>
     </rect>
@@ -79,21 +79,21 @@
    </property>
    <property name="font">
     <font>
-     <family>Segoe UI</family>
-     <pointsize>11</pointsize>
+     <family>Nyala</family>
+     <pointsize>16</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
    <property name="text">
-    <string>WYBOR DRUŻYNY</string>
+    <string>&lt;&lt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>65</y>
+     <x>460</x>
+     <y>175</y>
      <width>261</width>
      <height>21</height>
     </rect>
@@ -138,7 +138,7 @@
    <property name="font">
     <font>
      <family>Nyala</family>
-     <pointsize>20</pointsize>
+     <pointsize>24</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -153,8 +153,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>1100</x>
-     <y>120</y>
+     <x>1250</x>
+     <y>830</y>
      <width>300</width>
      <height>60</height>
     </rect>
@@ -217,8 +217,8 @@
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>120</y>
+     <x>70</x>
+     <y>220</y>
      <width>1011</width>
      <height>851</height>
     </rect>

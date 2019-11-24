@@ -43,6 +43,9 @@ private:
     int formation_color;
     int num1, num2, index;
     bool taken;
+
+signals:
+    void dialogClicked();
 };
 
 #endif // EDITPLAYER_H

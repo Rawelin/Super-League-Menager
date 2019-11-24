@@ -1,5 +1,6 @@
 #include "gamedialog.h"
 #include "ui_gamedialog.h"
+#include "mainmenu.h"
 
 
 extern Container *container;
@@ -15,7 +16,7 @@ GameDialog::GameDialog(QWidget *parent) :
     mouseTracking();
     setIco();
 
-    container->music_player->setPlayer();
+    //container->music_player->setPlayer();
     ui->progressBar->setValue(container->music_player->getVolume());
 
     connect(ui->start, SIGNAL(clicked(bool)), this, SLOT(start()));
@@ -27,6 +28,7 @@ GameDialog::GameDialog(QWidget *parent) :
     connect(ui->down, SIGNAL(clicked(bool)), this, SLOT(volumeDown()));
 
     connect(this, SIGNAL(hovered()), this, SLOT(highLight()));
+
 }
 
 GameDialog::~GameDialog()
@@ -132,7 +134,8 @@ void GameDialog::on_squad_clicked()
 void GameDialog::on_exit_clicked()
 {
     container->music_player->stop();
-    GameDialog::close();
+     QApplication::quit();
+  //  GameDialog::close();
 }
 
 void GameDialog::on_teams_clicked()
@@ -162,12 +165,14 @@ void GameDialog::on_nextday_clicked()
 void GameDialog::on_mainmenu_clicked()
 {
     container->music_player->stop();
-    container->memeoryHarvester();
+   // container->memeoryHarvester();
     container->loadDefaultData();
 
-    MainMenu mainmenu;
-    GameDialog::close();
-    mainmenu.exec();
+   // MainMenu mainmenu;
+   // GameDialog::close();
+   // mainmenu.exec();
+
+    emit dialogClicked();
 }
 
 void GameDialog::start()

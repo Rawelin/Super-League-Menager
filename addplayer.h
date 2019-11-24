@@ -2,7 +2,6 @@
 #define ADDPLAYER_H
 
 #include <QDialog>
-#include "editchooseteam.h"
 #include "player.h"
 #include "serialization.h"
 
@@ -36,6 +35,9 @@ private:
     };
     int squad_number;
     int formation_color;
+
+signals:
+    void dialogClicked();
 
 };
 

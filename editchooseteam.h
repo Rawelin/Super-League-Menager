@@ -3,10 +3,9 @@
 
 #include <QDialog>
 #include <QMediaPlayer>
-#include "edit.h"
 #include "addplayer.h"
 #include "removeplayer.h"
-#include "editplayer.h"
+
 
 namespace Ui {
 class EditChooseTeam;
@@ -21,9 +20,9 @@ public:
     ~EditChooseTeam();
     void setImages();
     void setSelect(int select, int team_number, const QString save);
+    void setLabel(int select_option);
 
 private slots:
-
     void on_real_clicked();
     void on_bayern_clicked();
     void on_barcelona_clicked();
@@ -41,12 +40,19 @@ private slots:
     void on_manu_clicked();
     void on_napoli_clicked();
     void on_edit_clicked();
+    void bakToMainMenu();
 
 private:
     Ui::EditChooseTeam *ui;
     QMediaPlayer* music;
     QPalette* palette;
+    AddPlayer *addPlayer;
+    RemovePlayer *removePlayer;
+    EditPlayer *editPlayer;
     int select;
+
+signals:
+    void dialogClicked();
 };
 
 #endif // EDITCHOOSETEAM_H

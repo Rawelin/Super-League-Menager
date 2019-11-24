@@ -3,11 +3,14 @@
 
 #include <QDialog>
 #include "editchooseteam.h"
-#include "options.h"
+
+
 
 namespace Ui {
 class Edit;
 }
+
+class EditChooseTeam;
 
 class Edit : public QDialog
 {
@@ -22,10 +25,17 @@ private slots:
     void on_add_clicked();
     void on_remove_clicked();
     void on_edit_clicked();
+    void bakToMainMenu();
+
 
 private:
     Ui::Edit *ui;
     QPalette *palette;
+    EditChooseTeam *addPlayer, *editPlayer, *removePlayer;
+
+signals:
+    void dialogClicked();
+
 };
 
 #endif // EDIT_H

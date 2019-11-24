@@ -6,7 +6,10 @@
 #include "showteamstats.h"
 #include "showplayerstats.h"
 
+
 class ShowPlayerStats;
+class ShowTeamStats;
+
 
 class Functions
 {

@@ -67,8 +67,10 @@ void EditPlayer::SetGraphics()
     ui->tableWidget->setFrameShape(QFrame::NoFrame);
     //ui->tableWidget->setGridStyle(Qt::SolidLine);
 
-    ui->add->setStyleSheet("background-color : rgba(255, 255, 255, 10);");
-    ui->editchooseteam->setStyleSheet("background-color : rgba(255, 255, 255, 10);");
+    QString style = "background-color: rgba(0, 127, 255, 30);";
+
+    ui->add->setStyleSheet(style);
+    ui->editchooseteam->setStyleSheet(style);
 
     setSpinBoxGraphics();
 }
@@ -153,9 +155,10 @@ void EditPlayer::changePlayer()
 
 void EditPlayer::on_editchooseteam_clicked()
 {
-    EditChooseTeam editchooseteam(0, 3);
-    EditPlayer::close();
-    editchooseteam.exec();
+   // EditChooseTeam editchooseteam(0, 3);
+   // EditPlayer::close();
+   // editchooseteam.exec();
+   emit dialogClicked();
 }
 
 void EditPlayer::on_add_clicked()

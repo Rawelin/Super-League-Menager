@@ -1,6 +1,6 @@
 0
 Kylor
-Navas
+Navass
 COS
 30
 GK
@@ -17,7 +17,7 @@ GK
 62
 0
 100
-D:/Programowanie/Qt C++/Qt Super League/Super League/Players/Real/navas.png
+
 0
 Marcelo
 Vieira
