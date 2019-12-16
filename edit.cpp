@@ -9,9 +9,9 @@ Edit::Edit(QWidget *parent) :
     setWindowFlags(Qt::WindowTitleHint);
     this->showFullScreen();
 
-    palette = new QPalette();
-    palette->setBrush(QPalette::Background,*(new QBrush(*(new QPixmap("Stadiony/lech.jpg")))));
-    setPalette(*palette);
+//    palette = new QPalette();
+//    palette->setBrush(QPalette::Background,*(new QBrush(*(new QPixmap("Stadiony/lech.jpg")))));
+//    setPalette(*palette);
 
     QString style = "background-color: rgba(0, 127, 255, 30);";
 
@@ -50,33 +50,20 @@ void Edit::on_option_clicked()
 
 void Edit::on_add_clicked()
 {
-    //EditChooseTeam editchoseteam(0, 1);
-    //Edit::close();
-    //editchoseteam.exec();
-    //ui->stackedWidget->widget(1)->setAttribute();
     ui->stackedWidget->setCurrentIndex(1);
-
-
 }
 
 void Edit::on_remove_clicked()
 {
-   // EditChooseTeam editchoseteam(0, 2);
-   // Edit::close();
-   // editchoseteam.exec();
      ui->stackedWidget->setCurrentIndex(2);
 }
 
 void Edit::on_edit_clicked()
 {
-    //EditChooseTeam editchoseteam(0, 3);
-    //Edit::close();
-    //editchoseteam.exec();
      ui->stackedWidget->setCurrentIndex(3);
 }
 
 void Edit::bakToMainMenu()
 {
     ui->stackedWidget->setCurrentIndex(0);
-
 }

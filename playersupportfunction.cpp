@@ -1,24 +1,22 @@
 #include "playersupportfunction.h"
 
-PlayerSupportFunction::PlayerSupportFunction()
+PlayerSupportFunction::PlayerSupportFunction(Player *player)
 {
-
+    this->player = player;
 }
 
-void PlayerSupportFunction::setSupportFunction(double gk, double def, double mid, double at,
-                                               double tac , double tech, double sh, double pa,
-                                               double he, double sp)
+void PlayerSupportFunction::setSupportFunction()
 {
-    gkeeper = gk;
-    defence = def;
-    midfield = mid;
-    attack = at;
-    tackle = tac;
-    technick = tech;
-    shot = sh;
-    pass = pa;
-    header = he;
-    speed = sp;
+    gkeeper = player->getGkeeper();
+    defence = player->getDefence();
+    midfield = player->getMidfield();
+    attack = player->getAttack();
+    tackle = player->getTackle();
+    technick = player->getTechnik();
+    shot = player->getShot();
+    pass = player->getPass();
+    header = player->getHeader();
+    speed = player->getSpeed();
 }
 
 double PlayerSupportFunction::setGoalKeeperRatings()

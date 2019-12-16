@@ -17,29 +17,31 @@ MainMenu::MainMenu(QWidget *parent) :
 
      setGraphics();
 
+
     //setWindowFlags(Qt::WindowTitleHint);
     //setWindowFlags(Qt::FramelessWindowHint);
 
-    container->music_player->setPlayer();
-    container->music_player->setTrack(1);
-    container->music_player->start();
+    container->musicPlayer->setPlayer();
+    container->musicPlayer->setTrack(1);
+    container->musicPlayer->start();
 
     choseTeam = new ChoseTeam(this);
     userDataDialog = new UserDataDialog(choseTeam);
     gameDialog = new GameDialog();
-
+    
     ui->stackedWidget->insertWidget(1, &about);
     ui->stackedWidget->insertWidget(2, &options);
     ui->stackedWidget->insertWidget(3, choseTeam);
     ui->stackedWidget->insertWidget(4, userDataDialog);
     ui->stackedWidget->insertWidget(5, gameDialog);
 
-    connect(&about, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
-    connect(&options, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
-    connect(choseTeam, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
+    //connect(&about, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
+   // connect(&options, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
+   // connect(choseTeam, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
     connect(choseTeam, SIGNAL(dialogClickedGo()), this, SLOT(goToUserDataDialog()));
     connect(userDataDialog, SIGNAL(dialogClicked()), this, SLOT(bakToChoseTeam()));
     connect(userDataDialog, SIGNAL(dialogClickedGo()), this, SLOT(goToGameDialog()));
+
     connect(gameDialog, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
 
     connect(this, SIGNAL(hovered()),this, SLOT(highLight()));
@@ -106,8 +108,8 @@ void MainMenu::mouseMoveEvent(QMouseEvent *event)
 
 void MainMenu::on_mainMenu_clicked()
 {
-    container->music_player->setTrack(1);
-    container->music_player->start();
+    container->musicPlayer->setTrack(1);
+    container->musicPlayer->start();
     ui->stackedWidget->setCurrentIndex(0);
     ui->mainMenu->setStyleSheet("background-color: rgba(0, 127, 255, 70);");
     QPixmap bkgnd("Stadiony/alianz.jpg");
@@ -132,8 +134,8 @@ void MainMenu::on_newGame_clicked()
     //setAttribute(Qt::WA_DeleteOnClose);
 
 
-    container->music_player->setTrack(5);
-    container->music_player->start();
+    container->musicPlayer->setTrack(5);
+    container->musicPlayer->start();
     ui->newGame->setFlat(true);
     ui->mainMenu->setFlat(false);
     ui->abaut->setFlat(false);
@@ -173,13 +175,13 @@ void MainMenu::on_option_clicked()
 
 void MainMenu::on_quit_clicked()
 {
-    container->music_player->stop();
+    container->musicPlayer->stop();
     MainMenu::close();
 }
 
 void MainMenu::on_load_clicked()
 {
-    container->music_player->stop();
+    container->musicPlayer->stop();
     container->loadData();
 
     ui->option->setVisible(false);
@@ -210,9 +212,9 @@ void MainMenu::bakToMainMenu()
     ui->mainMenu->setFlat(true);
     ui->newGame->setFlat(false);
 
-    container->music_player->setPlayer();
-    container->music_player->setTrack(1);
-    container->music_player->start();
+    container->musicPlayer->setPlayer();
+    container->musicPlayer->setTrack(1);
+    container->musicPlayer->start();
     ui->stackedWidget->setCurrentIndex(0);
     QPixmap bkgnd("Stadiony/alianz.jpg");
     container->functions->setBackground(this, bkgnd);
@@ -225,9 +227,9 @@ void MainMenu::bakToChoseTeam()
 
 void MainMenu::goToGameDialog()
 {
-    container->music_player->stop();
-    container->music_player->setTrack(1);
-    container->music_player->start();
+    container->musicPlayer->stop();
+    container->musicPlayer->setTrack(0);
+    container->musicPlayer->start();
 
     ui->option->setVisible(false);
     ui->load->setVisible(false);

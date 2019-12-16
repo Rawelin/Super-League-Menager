@@ -557,9 +557,8 @@ void Player::playerRecovery(QVector<Player> &player)
 
 void Player::setPlayerSupportFunction()
 {
-    player_support_function = new PlayerSupportFunction();
-    player_support_function->setSupportFunction(gkeeper, defence, midfield, attack, tackle,
-                                                technik, shot, pass, header, speed);
+    player_support_function = new PlayerSupportFunction(this);
+    player_support_function->setSupportFunction();
 }
 double Player::calcEnergy()
 {

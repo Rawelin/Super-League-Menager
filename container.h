@@ -45,18 +45,18 @@ public:
     QVector<QVector<Player>> player;
     QList<Team> teams;
     League *league;
-    MusicPlayer *music_player;
+    MusicPlayer *musicPlayer;
     Functions *functions;
-    MatchSimulation *matchsimulation;
+    MatchSimulation *matchSimulation;
     Serialization *serialization;
     Versus *versus;
-    ShowTeamStats *showteamstats;
+    ShowTeamStats *showTeamStats;
     UserData *userData;
-    ArtificialIntelligence *artificial;
-    MatchAlgorithms *matchAlgo;
+    ArtificialIntelligence *artificialInteligence;
+    MatchAlgorithms *matchAlgoritm;
     Hovered *hovered;
     Formations *formations;
-    SetMultimedia *set_multimedia;
+    SetMultimedia *setMultimedia;
 
     void loadDefaultData();
     void saveData();

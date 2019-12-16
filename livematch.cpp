@@ -20,8 +20,8 @@ LiveMatch::LiveMatch(QWidget *parent, int ho, int aw) :
     ui->setupUi(this);
     this->showFullScreen();
 
-    container->matchAlgo->setAtributes(home, away);
-    container->matchAlgo->setLiveMatch(true);
+    container->matchAlgoritm->setAtributes(home, away);
+    container->matchAlgoritm->setLiveMatch(true);
 
     setGraphic();
     matchProgress();
@@ -43,9 +43,9 @@ void LiveMatch::matchProgress()
     {
         displayMatchStats();
         setParameters();
-        container->matchAlgo->setParameters();
-        container->matchAlgo->setClock(clock);
-        container->matchAlgo->shotOrNot();
+        container->matchAlgoritm->setParameters();
+        container->matchAlgoritm->setClock(clock);
+        container->matchAlgoritm->shotOrNot();
         commentary();
         computerStrategy();
 
@@ -55,8 +55,13 @@ void LiveMatch::matchProgress()
            squad.exec();
         }
     }
-    container->matchAlgo->setStatistic();
-    container->artificial->resetVariable();
+    container->matchAlgoritm->setStatistic();
+    container->artificialInteligence->resetVariable();
+
+    if(clock >= 90)
+    {
+        ui->back->setVisible(true);
+    }
 }
 
 void LiveMatch::setParameters()
@@ -242,6 +247,8 @@ void LiveMatch::setGraphic()
     ui->shottemp->setStyleSheet("background-color: rgba(255, 255, 255, 0);");
     ui->result->setStyleSheet("background-color: rgba(255, 255, 255, 0);");
 
+    ui->back->setVisible(false);
+
     ui->action->clear();
     ui->teamaction->clear();
     ui->coments->clear();
@@ -257,19 +264,19 @@ void LiveMatch::displayMatchStats()
     int home_tackle = container->teams[home].teamTackleEnergy(container->teams[home].getPlayer(), home_pressing);
     int away_tackle = container->teams[away].teamTackleEnergy(container->teams[away].getPlayer(), away_pressing);
 
-    int difference = container->matchAlgo->getDifference();
+    int difference = container->matchAlgoritm->getDifference();
 
-    home_team_power = container->matchAlgo->getHomeTeamPower() + home_tackle;
-    away_team_power = container->matchAlgo->getAwayTeamPower() + away_tackle;
+    home_team_power = container->matchAlgoritm->getHomeTeamPower() + home_tackle;
+    away_team_power = container->matchAlgoritm->getAwayTeamPower() + away_tackle;
 
     ui->dif->setNum(difference);
 
-    ui->homepower->setNum(container->matchAlgo->getHomeTeamPower());
-    ui->awaypower->setNum(container->matchAlgo->getAwayTeamPower());
+    ui->homepower->setNum(container->matchAlgoritm->getHomeTeamPower());
+    ui->awaypower->setNum(container->matchAlgoritm->getAwayTeamPower());
 
-    ui->homescore->setNum(container->matchAlgo->getHomeScore());
-    ui->homestrikes->setNum(container->matchAlgo->getHomeShots());
-    ui->hometarget->setNum(container->matchAlgo->getHomeTarget());
+    ui->homescore->setNum(container->matchAlgoritm->getHomeScore());
+    ui->homestrikes->setNum(container->matchAlgoritm->getHomeShots());
+    ui->hometarget->setNum(container->matchAlgoritm->getHomeTarget());
 
     ui->homegk->setNum(team->teamGoalkeeperEnergy(container->teams[home].getPlayer()));
     ui->homedef->setNum(team->teamDefenceEnergy(container->teams[home].getPlayer(), container->teams[home].getFormation()));
@@ -282,9 +289,9 @@ void LiveMatch::displayMatchStats()
     ui->homeenergy->setNum(team->teamEnergy(container->teams[home].getPlayer()));
     ui->homestrength->setNum(team->teamStrengthEnergy(container->teams[home].getPlayer(), container->teams[home].getFormation()));
 
-    ui->awayscore->setNum(container->matchAlgo->getAwayScore());
-    ui->awaystrikes->setNum(container->matchAlgo->getAwayShots());
-    ui->awaytarget->setNum(container->matchAlgo->getAwayTargrt());
+    ui->awayscore->setNum(container->matchAlgoritm->getAwayScore());
+    ui->awaystrikes->setNum(container->matchAlgoritm->getAwayShots());
+    ui->awaytarget->setNum(container->matchAlgoritm->getAwayTargrt());
 
     ui->awaygk->setNum(team->teamGoalkeeperEnergy(container->teams[away].getPlayer()));
     ui->awaydef->setNum(team->teamDefenceEnergy(container->teams[away].getPlayer(), container->teams[away].getFormation()));
@@ -306,8 +313,8 @@ void LiveMatch::shotsStatusBar()
     const int PERCENT = 100;
 
     int home_shots_progress, away_shots_progress;
-    int home_shots = container->matchAlgo->getHomeShots();
-    int away_shots = container->matchAlgo->getAwayShots();
+    int home_shots = container->matchAlgoritm->getHomeShots();
+    int away_shots = container->matchAlgoritm->getAwayShots();
 
     home_shots_progress = (home_shots * PERCENT)/(away_shots + home_shots);
     away_shots_progress = (away_shots * PERCENT)/(away_shots + home_shots);
@@ -321,8 +328,8 @@ void LiveMatch::shotsOnTargetStatusBar()
     const int PERCENT = 100;
 
     int home_shots_progress_target, away_shots_progress_target;
-    int home_target = container->matchAlgo->getHomeTarget();
-    int away_target = container->matchAlgo->getAwayTargrt();
+    int home_target = container->matchAlgoritm->getHomeTarget();
+    int away_target = container->matchAlgoritm->getAwayTargrt();
 
     home_shots_progress_target = (home_target * PERCENT)/(away_target + home_target);
     away_shots_progress_target = (away_target * PERCENT)/(away_target + home_target);
@@ -393,34 +400,33 @@ void LiveMatch::attackLevel()
 
 void LiveMatch::computerStrategy()
 {
-    int home_score = container->matchAlgo->getHomeScore();
-    int away_score = container->matchAlgo->getAwayScore();
+    int home_score = container->matchAlgoritm->getHomeScore();
+    int away_score = container->matchAlgoritm->getAwayScore();
 
-    container->artificial->setStrategy(clock, home_score, away_score);
-
-    container->artificial->changePlayer();                             // potrrzebny obiekt to inicjacji zmiennych w konstruktorze
+    container->artificialInteligence->setStrategy(clock, home_score, away_score);
+    container->artificialInteligence->changePlayer();                             // potrrzebny obiekt to inicjacji zmiennych w konstruktorze
 }
 
 void LiveMatch::commentary()
 {
-    ui->action->setText(container->matchAlgo->getAction());
-    ui->teamaction->setText(container->matchAlgo->getTeamName());
-    ui->coments->setText(container->matchAlgo->getStrikersName());
-    ui->result->setText(container->matchAlgo->getComentary());
+    ui->action->setText(container->matchAlgoritm->getAction());
+    ui->teamaction->setText(container->matchAlgoritm->getTeamName());
+    ui->coments->setText(container->matchAlgoritm->getStrikersName());
+    ui->result->setText(container->matchAlgoritm->getComentary());
 
-    if(container->matchAlgo->getStartDisplay() == true)
+    if(container->matchAlgoritm->getStartDisplay() == true)
         container->functions->delay(2000);
 
-    if(container->matchAlgo->getHomeGoalFlag() == true)
-        ui->homelist->addItem(container->matchAlgo->getHomeStriker());
+    if(container->matchAlgoritm->getHomeGoalFlag() == true)
+        ui->homelist->addItem(container->matchAlgoritm->getHomeStriker());
 
-    if(container->matchAlgo->getAwayGoalFlag() == true)
-        ui->awaylist->addItem(container->matchAlgo->getAwayStriker());
+    if(container->matchAlgoritm->getAwayGoalFlag() == true)
+        ui->awaylist->addItem(container->matchAlgoritm->getAwayStriker());
 
-    container->matchAlgo->clearVariables();
-    container->matchAlgo->setStartDisplay(false);
-    container->matchAlgo->setHomeGoalFlag(false);
-    container->matchAlgo->setAwayGoalFlag(false);
+    container->matchAlgoritm->clearVariables();
+    container->matchAlgoritm->setStartDisplay(false);
+    container->matchAlgoritm->setHomeGoalFlag(false);
+    container->matchAlgoritm->setAwayGoalFlag(false);
 }
 
 void LiveMatch::on_back_clicked()

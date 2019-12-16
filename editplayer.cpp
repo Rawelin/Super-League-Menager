@@ -15,7 +15,6 @@ EditPlayer::EditPlayer(QWidget *parent, int sqn, const QString &save) :
 
     ui->setupUi(this);
     this->showFullScreen();
-   // setWindowFlags(Qt::WindowTitleHint);
 
     connect(ui->gkSlider, SIGNAL(valueChanged(int)), ui->goalkeeper, SLOT(setValue(int)));
     connect(ui->defSlider, SIGNAL(valueChanged(int)), ui->defence, SLOT(setValue(int)));

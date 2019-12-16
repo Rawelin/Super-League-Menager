@@ -23,8 +23,6 @@ private slots:
 private:
     Ui::Abaut *ui;
 
-signals:
-    void dialogClicked();
 
 public: Q_SIGNALS:
      void hovered();

@@ -41,7 +41,6 @@ public: Q_SIGNALS:
 
 private slots:
     void highLight();
-    void on_goback_clicked();
     void on_real_clicked();
     void on_legia_clicked();
     void on_lech_clicked();
@@ -60,7 +59,6 @@ private slots:
     void on_zaglebie_clicked();
 
 signals:
-    void dialogClicked();
     void dialogClickedGo();
 
 

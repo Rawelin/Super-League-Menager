@@ -18,11 +18,11 @@ private:
     double header;
     double speed;
     double overall;
+    Player *player;
 
 public:
-    PlayerSupportFunction();
-    void setSupportFunction(double, double, double, double, double, double, double, double,
-                            double, double);
+    PlayerSupportFunction(Player *player);
+    void setSupportFunction();
     double setGoalKeeperRatings();
     double setCBRatings();
     double setRBLBRatings();

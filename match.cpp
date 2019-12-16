@@ -117,14 +117,14 @@ void Match::on_nextday_clicked()
 
        if(container->league->getFixture() < 31)                        // przerwa letnia
        {
-           container->music_player->smoothVolumeDown();
+           container->musicPlayer->smoothVolumeDown();
 
            MatchInterface matchinterface(this);
 
            matchinterface.exec();
 
            container->league->setFixture();
-           container->music_player->smoothVolumeUp();
+           container->musicPlayer->smoothVolumeUp();
            container->league->setMatchDays();
        }
 

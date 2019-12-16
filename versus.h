@@ -6,8 +6,12 @@
 
 class Versus
 {
+
 public:
+
     Versus(int fix);
+    ~Versus() {}
+
     void pairList();
     void pairProgress();
     void setTeamsPairs();
@@ -15,6 +19,7 @@ public:
     int getTeamsPaired(int i){return teams[i];}
 
 private:
+
     QList<QPair<int, int> > list;
     int fixture;
     int pair[8];

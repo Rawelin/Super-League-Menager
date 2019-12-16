@@ -17,7 +17,7 @@ GameDialog::GameDialog(QWidget *parent) :
     setIco();
 
     //container->music_player->setPlayer();
-    ui->progressBar->setValue(container->music_player->getVolume());
+    ui->progressBar->setValue(container->musicPlayer->getVolume());
 
     connect(ui->start, SIGNAL(clicked(bool)), this, SLOT(start()));
     connect(ui->stop, SIGNAL(clicked(bool)), this, SLOT(stop()));
@@ -42,13 +42,13 @@ void GameDialog::setIco()
     palette.setBrush(QPalette::Background,*(new QBrush(*(new QPixmap("Background/back2.jpg")))));
     setPalette(palette);
 
-    container->functions->setIcon(container->set_multimedia->getButtons(0), ui->forward, "Naprzód");
-    container->functions->setIcon(container->set_multimedia->getButtons(1), ui->previous, "Do tyłu");
-    container->functions->setIcon(container->set_multimedia->getButtons(2), ui->start, "Graj");
-    container->functions->setIcon(container->set_multimedia->getButtons(3), ui->stop, "Stop");
-    container->functions->setIcon(container->set_multimedia->getButtons(4), ui->pause, "Pauza");
-    container->functions->setIcon(container->set_multimedia->getButtons(5), ui->down, "Ścisz");
-    container->functions->setIcon(container->set_multimedia->getButtons(6), ui->up, "Podgłośnij");
+    container->functions->setIcon(container->setMultimedia->getButtons(0), ui->forward, "Naprzód");
+    container->functions->setIcon(container->setMultimedia->getButtons(1), ui->previous, "Do tyłu");
+    container->functions->setIcon(container->setMultimedia->getButtons(2), ui->start, "Graj");
+    container->functions->setIcon(container->setMultimedia->getButtons(3), ui->stop, "Stop");
+    container->functions->setIcon(container->setMultimedia->getButtons(4), ui->pause, "Pauza");
+    container->functions->setIcon(container->setMultimedia->getButtons(5), ui->down, "Ścisz");
+    container->functions->setIcon(container->setMultimedia->getButtons(6), ui->up, "Podgłośnij");
 
 
     QString semitransparent = "background-color: rgba(255, 255, 255, 70);";
@@ -133,7 +133,7 @@ void GameDialog::on_squad_clicked()
 
 void GameDialog::on_exit_clicked()
 {
-    container->music_player->stop();
+    container->musicPlayer->stop();
      QApplication::quit();
   //  GameDialog::close();
 }
@@ -164,7 +164,7 @@ void GameDialog::on_nextday_clicked()
 
 void GameDialog::on_mainmenu_clicked()
 {
-    container->music_player->stop();
+    container->musicPlayer->stop();
    // container->memeoryHarvester();
     container->loadDefaultData();
 
@@ -177,44 +177,44 @@ void GameDialog::on_mainmenu_clicked()
 
 void GameDialog::start()
 {
-    container->music_player->start();
+    container->musicPlayer->start();
 }
 
 void GameDialog::stop()
 {
-    container->music_player->stop();
+    container->musicPlayer->stop();
 }
 
 void GameDialog::pause()
 {
-    container->music_player->pause();
+    container->musicPlayer->pause();
 }
 
 void GameDialog::forward()
 {
-    container->music_player->forward();
+    container->musicPlayer->forward();
 }
 
 void GameDialog::previous()
 {
-    container->music_player->previous();
+    container->musicPlayer->previous();
 }
 
 void GameDialog::volumeUp()
 {
-    if(container->music_player->getVolume() < 100)
+    if(container->musicPlayer->getVolume() < 100)
     {
-        container->music_player->volumeTurnUp();
-        ui->progressBar->setValue(container->music_player->getVolume());
+        container->musicPlayer->volumeTurnUp();
+        ui->progressBar->setValue(container->musicPlayer->getVolume());
     }
 }
 
 void GameDialog::volumeDown()
 {
-    if(container->music_player->getVolume() > 0)
+    if(container->musicPlayer->getVolume() > 0)
     {
-        container->music_player->volumeTurnDown();
-        ui->progressBar->setValue(container->music_player->getVolume());
+        container->musicPlayer->volumeTurnDown();
+        ui->progressBar->setValue(container->musicPlayer->getVolume());
     }
 }
 

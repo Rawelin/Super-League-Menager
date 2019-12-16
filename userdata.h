@@ -11,7 +11,6 @@ private:
     QString nationality;
     int age;
     int id;
-
 public:
     UserData();
 
@@ -27,7 +26,6 @@ public:
     void setNationality(QString nat){nationality = nat;}
     void setAge(int a){age = a;}
     void setId(int i){id = i;}
-
 };
 
 #endif // USERDATA_H

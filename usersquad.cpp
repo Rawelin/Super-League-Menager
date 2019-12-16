@@ -16,7 +16,17 @@ UserSquad::UserSquad(QWidget *parent, bool wpm) :
     this->showFullScreen();
     setWindowFlags(Qt::FramelessWindowHint);
 
-    id = container->userData->getId();                           // numer skladu w vektorze 2d
+
+    for(int i = 0; i < container->teams.size(); i++)                     // TO DO zrobić funkcję w klasie Functions
+    {
+        if(container->teams[i].getTeamId() == container->userData->getId())
+        {
+            id = i;
+            break;
+        }
+    }
+
+    //id = container->userData->getIdPosition();                           // numer skladu w vektorze 2d
     when_playing_match = wpm;
     substitutions = 3;
     taken = false;

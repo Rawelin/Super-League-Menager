@@ -11,7 +11,7 @@ MatchSimulation::MatchSimulation(int ho, int aw)
     home_team_power = away_team_power = 0;
     home_score = away_score = 0;
 
-    container->matchAlgo->setAtributes(home, away);
+    container->matchAlgoritm->setAtributes(home, away);
 }
 
 void MatchSimulation::matchProgress()
@@ -19,17 +19,17 @@ void MatchSimulation::matchProgress()
     for(clock = 0; clock <= 90; ++clock)
     {
        //setParameters();
-       container->matchAlgo->setParameters();
+       container->matchAlgoritm->setParameters();
 
-       container->matchAlgo->setClock(clock);
-       container->matchAlgo->shotOrNot();
+       container->matchAlgoritm->setClock(clock);
+       container->matchAlgoritm->shotOrNot();
 
-       container->artificial->changePlayerSimulation(home, true);
-       container->artificial->changePlayerSimulation(away, false);
+       container->artificialInteligence->changePlayerSimulation(home, true);
+       container->artificialInteligence->changePlayerSimulation(away, false);
       //shotOrNot();
     }
-       container->matchAlgo->setStatistic();
-       container->artificial->resetVariable();
+       container->matchAlgoritm->setStatistic();
+       container->artificialInteligence->resetVariable();
    // setStatistic();
 }
 

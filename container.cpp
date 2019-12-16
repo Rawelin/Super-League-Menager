@@ -8,44 +8,46 @@ Container::Container()
 Container::~Container()
 {
     delete league;
-    delete music_player;
-    delete matchAlgo;
+    delete musicPlayer;
+    delete matchAlgoritm;
     delete userData;
     delete versus;
-    delete artificial;
-    delete set_multimedia;
+    delete artificialInteligence;
+    delete setMultimedia;
 }
 
 void Container::loadDefaultData()
 {
     league = new League();
-    music_player = new MusicPlayer();
+    musicPlayer = new MusicPlayer();
     versus = new Versus(1);
     userData = new UserData();
-    artificial = new ArtificialIntelligence();
-    matchAlgo = new MatchAlgorithms();
-    set_multimedia = new SetMultimedia();
+    artificialInteligence = new ArtificialIntelligence();
+    matchAlgoritm = new MatchAlgorithms();
+    setMultimedia = new SetMultimedia();
 
     teams.clear();
 
-    set_multimedia->setDefaultTeamDataPath();
+    setMultimedia->setDefaultTeamDataPath();
 
     Serialization serialization;
 
-    serialization.loadTeam(set_multimedia->getDefaultDataTeams(0), teams);
+    serialization.loadTeam(setMultimedia->getDefaultDataTeams(0), teams);
 
 
     for(int i = 0; i < teams.size(); i++)
-        serialization.loadSquadGame(set_multimedia->getDefaultPlayers(i), player, teams);
+        serialization.loadSquadGame(setMultimedia->getDefaultPlayers(i), player, teams);
 
-    set_multimedia->setRealFotos(teams);
-    set_multimedia->setTeamTshirt(teams);
-    set_multimedia->setTeamIcon(teams);
-    set_multimedia->setSavedTeamDataPath();
-    set_multimedia->setStadiumData(teams);
+    setMultimedia->setRealFotos(teams);
+    setMultimedia->setTeamTshirt(teams);
+    setMultimedia->setTeamIcon(teams);
+    setMultimedia->setSavedTeamDataPath();
+    setMultimedia->setStadiumData(teams);
 
    //qSort(teams.begin(), teams.end(), [](const Team &t1, const Team &t2)->bool{
    //                                     return ((t1.getName() > t2.getName()) );});
+
+   //std::random_shuffle(teams.begin(), teams.end());
 
 }
 
@@ -56,44 +58,44 @@ void Container::saveData()
     Serialization serialization;
 
     for(int i = 0; i < teams.size(); i++)
-        serialization.saveSquadGame(set_multimedia->getSavedPlayersList(i), teams);
+        serialization.saveSquadGame(setMultimedia->getSavedPlayersList(i), teams);
 
-    serialization.saveTeam(set_multimedia->getSavedSLData(0), teams);
-    serialization.saveLeague(set_multimedia->getSavedSLData(1), league);
-    serialization.saveUserData(set_multimedia->getSavedSLData(2), userData);
+    serialization.saveTeam(setMultimedia->getSavedSLData(0), teams);
+    serialization.saveLeague(setMultimedia->getSavedSLData(1), league);
+    serialization.saveUserData(setMultimedia->getSavedSLData(2), userData);
 }
 
 void Container::loadData()
 {
     teams.clear();
 
-    set_multimedia->setSavedTeamDataPath();
+    setMultimedia->setSavedTeamDataPath();
 
     Serialization serialization;
 
-    serialization.loadTeam(set_multimedia->getSavedSLData(0), teams);
+    serialization.loadTeam(setMultimedia->getSavedSLData(0), teams);
 
     for(int i = 0; i < teams.size(); i++)
-        serialization.loadSquadGame(set_multimedia->getSavedPlayersList(i), player, teams);
+        serialization.loadSquadGame(setMultimedia->getSavedPlayersList(i), player, teams);
 
-    serialization.loadLeague(set_multimedia->getSavedSLData(1), league);
-    serialization.loadUsetData(set_multimedia->getSavedSLData(2), userData);
+    serialization.loadLeague(setMultimedia->getSavedSLData(1), league);
+    serialization.loadUsetData(setMultimedia->getSavedSLData(2), userData);
 
   //  set_multimedia->setRealFotos(teams);
-    set_multimedia->setTeamTshirt(teams);
-    set_multimedia->setTeamIcon(teams);
-    set_multimedia->setStadiumData(teams);
+    setMultimedia->setTeamTshirt(teams);
+    setMultimedia->setTeamIcon(teams);
+    setMultimedia->setStadiumData(teams);
 }
 
 void Container::memeoryHarvester()
 {
     delete league;
-    delete music_player;
-    delete matchAlgo;
+    delete musicPlayer;
+    delete matchAlgoritm;
     delete userData;
     delete versus;
-    delete artificial;
-    delete set_multimedia;
+    delete artificialInteligence;
+    delete setMultimedia;
 }
 
 

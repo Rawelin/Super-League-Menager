@@ -25,8 +25,8 @@ ChoseTeam::ChoseTeam(QDialog *parent) :QDialog(parent),
      showplayerstats = new ShowPlayerStats(this);
 
      connect(this, SIGNAL(hovered()), this, SLOT(highLight()));
-}
 
+}
 ChoseTeam::~ChoseTeam()
 {
     delete ui;
@@ -48,22 +48,49 @@ void ChoseTeam::setImages()
 
     //setStyleSheet("background-image: url(/Programowanie/Qt C++/Qt Manager Project/ManagerPl/Stadiony/lech2.jpg)");
 
-    container->functions->setIcon(container->teams[0].getLogo(), ui->real, "Real Madryt");
-    container->functions->setIcon(container->teams[1].getLogo(), ui->lech, "Bayern Monachium");
-    container->functions->setIcon(container->teams[2].getLogo(), ui->legia, "FC Barcelona");
-    container->functions->setIcon(container->teams[3].getLogo(), ui->wisla, "Atletico Madryt");
-    container->functions->setIcon(container->teams[4].getLogo(), ui->ruch, "Juventus Turyn");
-    container->functions->setIcon(container->teams[5].getLogo(), ui->slask, "PSG");
-    container->functions->setIcon(container->teams[6].getLogo(), ui->lechia, "Borussia Dortmund");
-    container->functions->setIcon(container->teams[7].getLogo(), ui->termalica, "FC Sevilla");
-    container->functions->setIcon(container->teams[8].getLogo(), ui->piast, "Benfica Lisbona");
-    container->functions->setIcon(container->teams[9].getLogo(), ui->arka, "Chelsea London");
-    container->functions->setIcon(container->teams[10].getLogo(), ui->cracovia, "FC Arsenal");
-    container->functions->setIcon(container->teams[11].getLogo(), ui->gornik_leczna, "Manchester City");
-    container->functions->setIcon(container->teams[12].getLogo(), ui->korona, "FC Porto");
-    container->functions->setIcon(container->teams[13].getLogo(), ui->pogon, "Schalke 04");
-    container->functions->setIcon(container->teams[14].getLogo(), ui->wisla_plock, "Manchester United");
-    container->functions->setIcon(container->teams[15].getLogo(), ui->zaglebie, "FC Napoli");
+     QList<QPair<QPushButton*, int> > teamLabels;
+
+     teamLabels.append(qMakePair(ui->real, 0));
+     teamLabels.append(qMakePair(ui->lech, 1));
+     teamLabels.append(qMakePair(ui->legia, 2));
+     teamLabels.append(qMakePair(ui->wisla, 3));
+     teamLabels.append(qMakePair(ui->ruch, 4));
+     teamLabels.append(qMakePair(ui->slask, 5));
+     teamLabels.append(qMakePair(ui->lechia, 6));
+     teamLabels.append(qMakePair(ui->termalica, 7));
+     teamLabels.append(qMakePair(ui->piast, 8));
+     teamLabels.append(qMakePair(ui->arka, 9));
+     teamLabels.append(qMakePair(ui->cracovia, 10));
+     teamLabels.append(qMakePair(ui->gornik_leczna, 11));
+     teamLabels.append(qMakePair(ui->korona, 12));
+     teamLabels.append(qMakePair(ui->pogon, 13));
+     teamLabels.append(qMakePair(ui->wisla_plock, 14));
+     teamLabels.append(qMakePair(ui->zaglebie, 15));
+
+     for(int i = 0; i < teamLabels.size(); i++)
+     {
+         container->functions->setIcon(container->teams[container->teams[i].getTeamId()].getLogo(),
+                                       teamLabels[container->teams[i].getTeamId()].first,
+                                       container->teams[container->teams[i].getTeamId()].getName() + " " +
+                                       container->teams[container->teams[i].getTeamId()].getCity());
+     }
+
+
+    //container->functions->setIcon(container->teams[1].getLogo(), ui->lech, container->teams[1].getName() + " " + container->teams[1].getCity());
+   // container->functions->setIcon(container->teams[2].getLogo(), ui->legia, container->teams[2].getName() + " " + container->teams[2].getCity());
+    //container->functions->setIcon(container->teams[3].getLogo(), ui->wisla, container->teams[3].getName() + " " + container->teams[3].getCity());
+    //container->functions->setIcon(container->teams[4].getLogo(), ui->ruch, container->teams[4].getName() + " " + container->teams[4].getCity());
+   // container->functions->setIcon(container->teams[5].getLogo(), ui->slask, container->teams[5].getName() + " " + container->teams[5].getCity());
+   // container->functions->setIcon(container->teams[6].getLogo(), ui->lechia, container->teams[6].getName() + " " + container->teams[6].getCity());
+   // container->functions->setIcon(container->teams[7].getLogo(), ui->termalica, container->teams[7].getName() + " " + container->teams[7].getCity());
+   // container->functions->setIcon(container->teams[8].getLogo(), ui->piast, container->teams[8].getName() + " " + container->teams[8].getCity());
+   // container->functions->setIcon(container->teams[9].getLogo(), ui->arka, container->teams[9].getName() + " " + container->teams[9].getCity());
+   // container->functions->setIcon(container->teams[10].getLogo(), ui->cracovia, container->teams[10].getName() + " " + container->teams[10].getCity());
+   // container->functions->setIcon(container->teams[11].getLogo(), ui->gornik_leczna, container->teams[11].getName() + " " + container->teams[11].getCity());
+    //container->functions->setIcon(container->teams[12].getLogo(), ui->korona, container->teams[12].getName() + " " + container->teams[12].getCity());
+  //  container->functions->setIcon(container->teams[13].getLogo(), ui->pogon, container->teams[13].getName() + " " + container->teams[13].getCity());
+  //  container->functions->setIcon(container->teams[14].getLogo(), ui->wisla_plock, container->teams[14].getName() + " " + container->teams[14].getCity());
+   // container->functions->setIcon(container->teams[15].getLogo(), ui->zaglebie, container->teams[15].getName() + " " + container->teams[15].getCity());
 }
 
 void ChoseTeam::mouseTracking()
@@ -111,21 +138,22 @@ void ChoseTeam::setAnimation()
 
 void ChoseTeam::getStats(QRect teamRect, int id)
 {
-    if(teamRect.contains(QCursor::pos()))
-    {
-        container->functions->showTeamStats(showteamstats, teamRect, id);
-        container->functions->showPlayerStats(showplayerstats, teamRect, id);
-    }
-    else
-    {
-        showteamstats->setVisible(false);
-        showplayerstats->setVisible(false);
-        setAnimation();
-    }
+//    if(teamRect.contains(QCursor::pos()))
+//    {
+//        container->functions->showTeamStats(showteamstats, teamRect, id);
+//        container->functions->showPlayerStats(showplayerstats, teamRect, id);
+//    }
+//    else
+//    {
+//        showteamstats->setVisible(false);
+//        showplayerstats->setVisible(false);
+//        setAnimation();
+//    }
 }
 
 void ChoseTeam::setUserData(int id)
 {
+
     container->userData->setId(id);
     //container->music_player->stop();
 
@@ -204,84 +232,85 @@ void ChoseTeam::highLight()
     if(jagieloniaIco.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, jagieloniaIco, 0);
-        container->functions->showPlayerStats(showplayerstats, jagieloniaIco, 0);
+        container->functions->showPlayerStats(showplayerstats, jagieloniaIco, container->teams[0].getTeamId());
+        qDebug() << "tram" << container->teams[0].getTeamId();
     }
 
     else if(lechico.contains(QCursor::pos()))
     {
 
         container->functions->showTeamStats(showteamstats, lechico, 1);
-        container->functions->showPlayerStats(showplayerstats, lechico, 1);
+        container->functions->showPlayerStats(showplayerstats, lechico, container->teams[1].getTeamId());
     }
     else if(legiaIco.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, legiaIco, 2);
-        container->functions->showPlayerStats(showplayerstats, legiaIco, 2);
+        container->functions->showPlayerStats(showplayerstats, legiaIco, container->teams[2].getTeamId());
     }
     else if(wislaIco.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, wislaIco, 3);
-        container->functions->showPlayerStats(showplayerstats, wislaIco, 3);
+        container->functions->showPlayerStats(showplayerstats, wislaIco, container->teams[3].getTeamId());
     }
     else if(ruchIco.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, ruchIco, 4);
-        container->functions->showPlayerStats(showplayerstats, ruchIco, 4);
+        container->functions->showPlayerStats(showplayerstats, ruchIco, container->teams[4].getTeamId());
     }
     else if(slaskIco.contains(QCursor::pos()))
     {
          container->functions->showTeamStats(showteamstats, slaskIco, 5);
-         container->functions->showPlayerStats(showplayerstats, slaskIco, 5);
+         container->functions->showPlayerStats(showplayerstats, slaskIco, container->teams[5].getTeamId());
     }
     else if(lechiaIco.contains(QCursor::pos()))
     {
           container->functions->showTeamStats(showteamstats, lechiaIco, 6);
-          container->functions->showPlayerStats(showplayerstats, lechiaIco, 6);
+          container->functions->showPlayerStats(showplayerstats, lechiaIco, container->teams[6].getTeamId());
     }
     else if(termalicaIco.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, termalicaIco, 7);
-        container->functions->showPlayerStats(showplayerstats, termalicaIco, 7);
+        container->functions->showPlayerStats(showplayerstats, termalicaIco, container->teams[7].getTeamId());
     }
     else if(piastIco.contains(QCursor::pos()))
     {
          container->functions->showTeamStats(showteamstats, piastIco, 8);
-         container->functions->showPlayerStats(showplayerstats, piastIco, 8);
+         container->functions->showPlayerStats(showplayerstats, piastIco, container->teams[8].getTeamId());
     }
     else if(arkaIco.contains(QCursor::pos()))
     {
          container->functions->showTeamStats(showteamstats, arkaIco, 9);
-         container->functions->showPlayerStats(showplayerstats, arkaIco, 9);
+         container->functions->showPlayerStats(showplayerstats, arkaIco, container->teams[9].getTeamId());
     }
     else if(cracovaiIco.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, cracovaiIco, 10);
-        container->functions->showPlayerStats(showplayerstats, cracovaiIco, 10);
+        container->functions->showPlayerStats(showplayerstats, cracovaiIco, container->teams[10].getTeamId());
     }
     else if(gornik_lecznaIco.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, gornik_lecznaIco, 11);
-        container->functions->showPlayerStats(showplayerstats, gornik_lecznaIco, 11);
+        container->functions->showPlayerStats(showplayerstats, gornik_lecznaIco, container->teams[11].getTeamId());
     }
     else if(koronaIco.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, koronaIco, 12);
-        container->functions->showPlayerStats(showplayerstats, koronaIco, 12);
+        container->functions->showPlayerStats(showplayerstats, koronaIco, container->teams[12].getTeamId());
     }
     else if(pogonIco.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, pogonIco, 13);
-        container->functions->showPlayerStats(showplayerstats, pogonIco, 13);
+        container->functions->showPlayerStats(showplayerstats, pogonIco, container->teams[13].getTeamId());
     }
     else if(wisla_plockIco.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, wisla_plockIco, 14);
-        container->functions->showPlayerStats(showplayerstats, wisla_plockIco, 14);
+        container->functions->showPlayerStats(showplayerstats, wisla_plockIco, container->teams[14].getTeamId());
     }
     else if(zaglebie_ico.contains(QCursor::pos()))
     {
         container->functions->showTeamStats(showteamstats, zaglebie_ico, 15);
-        container->functions->showPlayerStats(showplayerstats, zaglebie_ico, 15);
+        container->functions->showPlayerStats(showplayerstats, zaglebie_ico, container->teams[15].getTeamId());
     }
     else
     {
@@ -290,93 +319,84 @@ void ChoseTeam::highLight()
         setAnimation();
     }
 }
-void ChoseTeam::on_goback_clicked()
-{
-   // container->music_player->setTrack(5);
-    container->music_player->stop();
-   // MainMenu mainmenu;
-    //ChoseTeam::close();
-  //  mainmenu.exec();
-
-    emit dialogClicked();
-}
 
 void ChoseTeam::on_real_clicked()
 {
-    setUserData(0);
+    setUserData(container->teams[0].getTeamId());
 }
 void ChoseTeam::on_lech_clicked()
 {
-    setUserData(1);
+    setUserData(container->teams[1].getTeamId());
 }
+
 void ChoseTeam::on_legia_clicked()
 {
-    setUserData(2);
+    setUserData(container->teams[2].getTeamId());
 }
 
 void ChoseTeam::on_wisla_clicked()
 {
-    setUserData(3);
+    setUserData(container->teams[3].getTeamId());
 }
 
 void ChoseTeam::on_ruch_clicked()
 {
-     setUserData(4);
+     setUserData(container->teams[4].getTeamId());
 }
 
 void ChoseTeam::on_slask_clicked()
 {
-     setUserData(5);
+     setUserData(container->teams[5].getTeamId());
 }
 
 void ChoseTeam::on_lechia_clicked()
 {
-     setUserData(6);
+     setUserData(container->teams[6].getTeamId());
 }
 
 void ChoseTeam::on_termalica_clicked()
 {
-    setUserData(7);
+    setUserData(container->teams[7].getTeamId());
 }
 
 void ChoseTeam::on_piast_clicked()
 {
-     setUserData(8);
+     setUserData(container->teams[8].getTeamId());
 }
 
 void ChoseTeam::on_arka_clicked()
 {
-     setUserData(9);
+     setUserData(container->teams[9].getTeamId());
 }
 
 void ChoseTeam::on_cracovia_clicked()
 {
-     setUserData(10);
+     setUserData(container->teams[10].getTeamId());
 }
 
 void ChoseTeam::on_gornik_leczna_clicked()
 {
-     setUserData(11);
+     setUserData(container->teams[11].getTeamId());
 }
 
 void ChoseTeam::on_korona_clicked()
 {
-     setUserData(12);
+     setUserData(container->teams[12].getTeamId());
 }
 
 void ChoseTeam::on_pogon_clicked()
 {
-     setUserData(13);
+     setUserData(container->teams[13].getTeamId());
 }
 
 void ChoseTeam::on_wisla_plock_clicked()
 {
-     setUserData(14);
+     setUserData(container->teams[14].getTeamId());
 }
 
 void ChoseTeam::on_zaglebie_clicked()
 {
-    setUserData(15);
+    setUserData(container->teams[15].getTeamId());
 }
 
 

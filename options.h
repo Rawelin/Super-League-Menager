@@ -21,14 +21,12 @@ private slots:
     void on_edit_clicked();
     void bakToMainMenu();
 
-
 signals:
     void dialogClicked();
 
 private:
     Ui::Options *ui;
     Edit edit;
-
 };
 
 #endif // OPTIONS_H

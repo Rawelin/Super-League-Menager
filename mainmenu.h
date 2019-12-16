@@ -25,10 +25,8 @@ public:
     ~MainMenu();
     void setGraphics();
     void mouseTracking();
-    Ui::MainMenu* getMainMenuUI(){return ui;}
 
 private slots:
-
     void on_mainMenu_clicked();
     void on_newGame_clicked();
     void on_abaut_clicked();
@@ -40,7 +38,6 @@ private slots:
     void bakToChoseTeam();
     void goToGameDialog();
     void goToUserDataDialog();
-
 
 private:
     Ui::MainMenu *ui;
@@ -56,7 +53,6 @@ protected:
 
 public: Q_SIGNALS:
      void hovered();
-
 };
 
 #endif // MAINMENU_H

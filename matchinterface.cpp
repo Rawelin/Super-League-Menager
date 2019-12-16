@@ -289,22 +289,22 @@ void MatchInterface::confrontation(int home, int away)
    int id = container->userData->getId();
    int default_pressing = 0;
 
-   container->artificial->resetVariable();
+   container->artificialInteligence->resetVariable();
 
    if(container->teams[home].getTeamId() != id)                  // ustala ktory zespol z pary jest sterowany przez computer
    {
         default_pressing = container->teams[home].getPressing();
-        container->artificial->setId(home);
-        container->artificial->setHome(true);
-        container->artificial->setAway(false);
+        container->artificialInteligence->setId(home);
+        container->artificialInteligence->setHome(true);
+        container->artificialInteligence->setAway(false);
 
    }
    if(container->teams[away].getTeamId() != id)
    {
         default_pressing = container->teams[away].getPressing();
-        container->artificial->setId(away);
-        container->artificial->setAway(true);
-        container->artificial->setHome(false); 
+        container->artificialInteligence->setId(away);
+        container->artificialInteligence->setAway(true);
+        container->artificialInteligence->setHome(false); 
    }
 
    if(container->teams[home].getTeamId() == id ||
