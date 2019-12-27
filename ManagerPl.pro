@@ -58,7 +58,6 @@ SOURCES += main.cpp\
     playersupportfunction.cpp \
     formations.cpp \
     setmultimedia.cpp \
-    tabmenu.cpp \
     stadium.cpp \
     abaut.cpp
 
@@ -105,7 +104,6 @@ HEADERS  += mainmenu.h \
     playersupportfunction.h \
     formations.h \
     setmultimedia.h \
-    tabmenu.h \
     stadium.h \
     abaut.h
 
@@ -136,7 +134,6 @@ FORMS    += mainmenu.ui \
     showteamstats.ui \
     showplayerstats.ui \
     userdatadialog.ui \
-    tabmenu.ui \
     abaut.ui
 
 RESOURCES += \

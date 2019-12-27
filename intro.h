@@ -18,7 +18,7 @@ public:
     ~Intro();
 
 private slots:
-    void on_goback_clicked();
+    void on_go_clicked();
 
 private:
     Ui::Intro *ui;

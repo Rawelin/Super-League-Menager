@@ -14,7 +14,6 @@
 #include "match.h"
 //#include "mainmenu.h"
 #include "container.h"
-#include "tabmenu.h"
 #include "Ui_MainMenu.h"
 
 
@@ -43,6 +42,8 @@ private slots:
     void on_fixture_clicked();
     void on_nextday_clicked();
     void on_mainmenu_clicked();
+    void on_save_clicked();
+    void on_load_clicked();
     void start();
     void stop();
     void pause();
@@ -51,12 +52,10 @@ private slots:
     void volumeUp();
     void volumeDown();
     void highLight();
-    void on_save_clicked();
-    void on_load_clicked();
-    void on_tabMenu_clicked();
 
 private:
     Ui::GameDialog *ui;
+    Table *table;
 
 protected:
      void mouseMoveEvent(QMouseEvent *event);

@@ -23,7 +23,7 @@ public:
 
 private slots:
     void on_editchooseteam_clicked();
-    void on_pushButton_clicked();
+    void on_remove_clicked();
 
 private:
     Ui::RemovePlayer *ui;

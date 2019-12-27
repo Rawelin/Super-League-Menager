@@ -61,11 +61,9 @@ void GameDialog::setIco()
     ui->nextday->setStyleSheet(semitransparent);
     ui->teams->setStyleSheet(semitransparent);
     ui->squad->setStyleSheet(semitransparent);
-    ui->menu->setStyleSheet(transparent);
     ui->fixture->setStyleSheet(semitransparent);
     ui->save->setStyleSheet(semitransparent);
     ui->load->setStyleSheet(semitransparent);
-    ui->tabMenu->setStyleSheet(semitransparent);
 
    // ui->progressBar->setStyleSheet("background-color: rgba(0, 0, 0, 10);");
 
@@ -106,7 +104,6 @@ void GameDialog::mouseTracking()
     ui->stats->setMouseTracking(true);
     ui->save->setMouseTracking(true);
     ui->load->setMouseTracking(true);
-    ui->tabMenu->setMouseTracking(true);
 
     ui->start->setMouseTracking(true);
     ui->stop->setMouseTracking(true);
@@ -119,9 +116,13 @@ void GameDialog::mouseTracking()
 
 void GameDialog::on_table_clicked()
 {
-    container->functions->delay(100);
-    Table table(this);
-    table.exec();
+    //container->functions->delay(100);
+    //Table table(this);
+    //table.exec();
+
+    table = new Table();
+    ui->stackedWidget->insertWidget(1, table);
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 void GameDialog::on_squad_clicked()
@@ -230,7 +231,6 @@ void GameDialog::highLight()
     QRect fixture = ui->fixture->geometry();
     QRect save = ui->save->geometry();
     QRect load = ui->load->geometry();
-    QRect tabmenu = ui->tabMenu->geometry();
 
     QRect forward = ui->forward->geometry();
     QRect previous = ui->previous->geometry();
@@ -253,7 +253,6 @@ void GameDialog::highLight()
     container->functions->setHighLight(fixture, ui->fixture, highlight, normal);
     container->functions->setHighLight(save, ui->save, highlight, normal);
     container->functions->setHighLight(load, ui->load, highlight, normal);
-    container->functions->setHighLight(tabmenu, ui->tabMenu, highlight, normal);
     container->functions->setHighLight(forward, ui->forward, highlight, normal);
     container->functions->setHighLight(previous, ui->previous, highlight, normal);
     container->functions->setHighLight(start, ui->start, highlight, normal);
@@ -285,10 +284,3 @@ void GameDialog::on_load_clicked()
     container->loadData();
 }
 
-void GameDialog::on_tabMenu_clicked()
-{
-    TabMenu tabmenu;
-    tabmenu.exec();
-
-  //  GameDialog::close();
-}

@@ -20,7 +20,6 @@ public:
     void setTeamId(int i){id = i;}
     void setGraphics();
     void showStats();
-    void table();
 
 private:
     Ui::ShowTeamStats *ui;

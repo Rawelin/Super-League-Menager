@@ -39,7 +39,9 @@ void LiveMatch::matchProgress()
     ui->awayteam->setText(container->teams[away].getName() + " " +
                           container->teams[away].getCity());
 
-    for(clock = 0; clock <= 90; ++clock)
+    int clocLimit = container->functions->randInt(91,97);
+
+    for(clock = 0; clock <= clocLimit; ++clock)
     {
         displayMatchStats();
         setParameters();

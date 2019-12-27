@@ -25,23 +25,22 @@ MainMenu::MainMenu(QWidget *parent) :
     container->musicPlayer->setTrack(1);
     container->musicPlayer->start();
 
-    choseTeam = new ChoseTeam(this);
-    userDataDialog = new UserDataDialog(choseTeam);
+//    choseTeam = new ChoseTeam(this);
+    userDataDialog = new UserDataDialog();
     gameDialog = new GameDialog();
     
     ui->stackedWidget->insertWidget(1, &about);
     ui->stackedWidget->insertWidget(2, &options);
-    ui->stackedWidget->insertWidget(3, choseTeam);
+    ui->stackedWidget->insertWidget(3, &choseTeam);
     ui->stackedWidget->insertWidget(4, userDataDialog);
     ui->stackedWidget->insertWidget(5, gameDialog);
 
     //connect(&about, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
    // connect(&options, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
    // connect(choseTeam, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
-    connect(choseTeam, SIGNAL(dialogClickedGo()), this, SLOT(goToUserDataDialog()));
+    connect(&choseTeam, SIGNAL(dialogClickedGo()), this, SLOT(goToUserDataDialog()));
     connect(userDataDialog, SIGNAL(dialogClicked()), this, SLOT(bakToChoseTeam()));
     connect(userDataDialog, SIGNAL(dialogClickedGo()), this, SLOT(goToGameDialog()));
-
     connect(gameDialog, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
 
     connect(this, SIGNAL(hovered()),this, SLOT(highLight()));

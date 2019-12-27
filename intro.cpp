@@ -14,11 +14,11 @@ Intro::Intro(QWidget *parent) :
 
     container->functions->setBackground(this, bkgnd);
 
-    ui->goback->setStyleSheet("background-color:rgba(255, 255, 255, 30);");
+    ui->go->setStyleSheet("background-color:rgba(255, 255, 255, 30);");
     container->functions->delay(200);
-    ui->goback->setStyleSheet("background-color:rgba(255, 255, 255, 70);");
+    ui->go->setStyleSheet("background-color:rgba(255, 255, 255, 70);");
     container->functions->delay(200);
-    ui->goback->setStyleSheet("background-color:rgba(255, 255, 255, 30);");
+    ui->go->setStyleSheet("background-color:rgba(255, 255, 255, 30);");
 }
 
 Intro::~Intro()
@@ -26,7 +26,7 @@ Intro::~Intro()
     delete ui;
 }
 
-void Intro::on_goback_clicked()
+void Intro::on_go_clicked()
 {
     MainMenu mainmenu;
     Intro::close();

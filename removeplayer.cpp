@@ -47,7 +47,7 @@ void RemovePlayer::setGraphics()
 
     QString style = "background-color: rgba(0, 127, 255, 30);";
 
-    ui->pushButton->setStyleSheet(style);
+    ui->remove->setStyleSheet(style);
     ui->editchooseteam->setStyleSheet(style);
 }
 void RemovePlayer::squad()
@@ -140,7 +140,7 @@ void RemovePlayer::on_editchooseteam_clicked()
     emit dialogClicked();
 }
 
-void RemovePlayer::on_pushButton_clicked()
+void RemovePlayer::on_remove_clicked()
 {
     int number = 2000;
     number = ui->tableWidget->currentRow()+1;

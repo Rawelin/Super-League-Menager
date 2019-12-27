@@ -47,15 +47,15 @@ void Table::setGraphic()
 
 void Table::table()
 {
-   QList<Team>temporary;
+   QList<Team>temporaryTeams;
 
-   temporary = container->teams;
-   qSort(temporary.begin(), temporary.end(), [](const Team &t1, const Team &t2)->bool{
-                                       return ((t1.getPoint() > t2.getPoint()) ||
-                                       (t1.getPoint() == t2.getPoint() && t1.getDiffer() > t2.getDiffer()) ||
-                                       (t1.getPoint() == t2.getPoint() && t1.getDiffer() == t2.getDiffer() && t1.getGoalScored() > t2.getGoalScored()));});
+   temporaryTeams = container->teams;
+//   qSort(temporaryTeams.begin(), temporaryTeams.end(), [](const Team &t1, const Team &t2)->bool{
+//                                       return ((t1.getPoint() > t2.getPoint()) ||
+//                                       (t1.getPoint() == t2.getPoint() && t1.getDiffer() > t2.getDiffer()) ||
+//                                       (t1.getPoint() == t2.getPoint() && t1.getDiffer() == t2.getDiffer() && t1.getGoalScored() > t2.getGoalScored()));});
 
-  // qSort(temporary.begin(), temporary.end(), worseTeam);
+   qSort(temporaryTeams.begin(), temporaryTeams.end(), worseTeam);
 
    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
    ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
@@ -98,16 +98,16 @@ void Table::table()
        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
        fila = ui->tableWidget->rowCount() - 1;
 
-       ui->tableWidget->setItem(fila, TEAM, new QTableWidgetItem(temporary[i].getName() + "  " + temporary[i].getCity()));
-       ui->tableWidget->setItem(fila, ROUND, new QTableWidgetItem(QString::number(temporary[i].getRound())));
-       ui->tableWidget->setItem(fila, WIN, new QTableWidgetItem(QString::number(temporary[i].getWin())));
-       ui->tableWidget->setItem(fila, DRAW, new QTableWidgetItem(QString::number(temporary[i].getDraw())));
-       ui->tableWidget->setItem(fila, LOST, new QTableWidgetItem(QString::number(temporary[i].getLost())));
-       ui->tableWidget->setItem(fila, GS, new QTableWidgetItem(QString::number(temporary[i].getGoalScored())));
-       ui->tableWidget->setItem(fila, SEP, new QTableWidgetItem(temporary[i].getSeparator()));
-       ui->tableWidget->setItem(fila, GL, new QTableWidgetItem(QString::number(temporary[i].getGoalLost())));
-       ui->tableWidget->setItem(fila, DIF, new QTableWidgetItem(QString::number(temporary[i].getDiffer())));
-       ui->tableWidget->setItem(fila, POINTS, new QTableWidgetItem(QString::number(temporary[i].getPoint())));
+       ui->tableWidget->setItem(fila, TEAM, new QTableWidgetItem(temporaryTeams[i].getName() + "  " + temporaryTeams[i].getCity()));
+       ui->tableWidget->setItem(fila, ROUND, new QTableWidgetItem(QString::number(temporaryTeams[i].getRound())));
+       ui->tableWidget->setItem(fila, WIN, new QTableWidgetItem(QString::number(temporaryTeams[i].getWin())));
+       ui->tableWidget->setItem(fila, DRAW, new QTableWidgetItem(QString::number(temporaryTeams[i].getDraw())));
+       ui->tableWidget->setItem(fila, LOST, new QTableWidgetItem(QString::number(temporaryTeams[i].getLost())));
+       ui->tableWidget->setItem(fila, GS, new QTableWidgetItem(QString::number(temporaryTeams[i].getGoalScored())));
+       ui->tableWidget->setItem(fila, SEP, new QTableWidgetItem(temporaryTeams[i].getSeparator()));
+       ui->tableWidget->setItem(fila, GL, new QTableWidgetItem(QString::number(temporaryTeams[i].getGoalLost())));
+       ui->tableWidget->setItem(fila, DIF, new QTableWidgetItem(QString::number(temporaryTeams[i].getDiffer())));
+       ui->tableWidget->setItem(fila, POINTS, new QTableWidgetItem(QString::number(temporaryTeams[i].getPoint())));
 
        container->functions->delay(5);
        for(int i = 1; i < 10; ++i)
@@ -116,7 +116,7 @@ void Table::table()
        }
    }
 
-   setLogoAtTable(temporary);
+   setLogoAtTable(temporaryTeams);
 
    for(int i= 0; i < 10; ++i)
    {

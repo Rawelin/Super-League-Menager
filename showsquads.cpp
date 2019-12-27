@@ -23,7 +23,7 @@ ShowSquads::ShowSquads(QWidget *parent, const QString& name, int sqn) :
     setGraphic();
 
     ui->teamname->setText(team_name);
-    formation_color = container->teams[id].getFormation();
+    idFormation = container->teams[id].getFormation();
 
     squad();
 }
@@ -192,7 +192,7 @@ void ShowSquads::squad()
             ui->tableWidget->setItem(fila, SPEED, new QTableWidgetItem(QString::number(container->teams[id].getPlayer()[i].getSpeed())));
             ui->tableWidget->setItem(fila, ENDURANCE, new QTableWidgetItem(QString::number(container->teams[id].getPlayer()[i].getEndurance())));
             ui->tableWidget->setItem(fila, STAMINA, new QTableWidgetItem(QString::number(container->teams[id].getPlayer()[i].getStamina())));
-            ui->tableWidget->setItem(fila, OVERALL, new QTableWidgetItem(QString::number(container->teams[id].getPlayer()[i].getOverall(i, formation_color))));
+            ui->tableWidget->setItem(fila, OVERALL, new QTableWidgetItem(QString::number(container->teams[id].getPlayer()[i].getOverall(i, idFormation))));
             ui->tableWidget->setItem(fila, GOALS, new QTableWidgetItem(QString::number(container->teams[id].getPlayer()[i].getGoals())));
 
             for(int i = 2; i < 19; ++i)
@@ -202,11 +202,11 @@ void ShowSquads::squad()
         }
 
     updateTeamStats();
-    formationColor(formation_color);
+    formationId(idFormation);
 }
 
 
-void ShowSquads::formationColor(int formation)
+void ShowSquads::formationId(int formation)
 {
     if(formation == 1)
     {
@@ -267,28 +267,28 @@ void ShowSquads::formationColor(int formation)
 
 void ShowSquads::updateTeamStats()
 {
-    ui->str->setNum(team->teamStrength(container->teams[id].getPlayer(), formation_color));
+    ui->str->setNum(team->teamStrength(container->teams[id].getPlayer(), idFormation));
     ui->gk->setNum(team->teamGoalkeeper(container->teams[id].getPlayer()));
-    ui->def->setNum(team->teamDefence(container->teams[id].getPlayer(), formation_color));        // formation_color odpowiada rodzajowi formacji
-    ui->mid->setNum(team->teamMidfield(container->teams[id].getPlayer(), formation_color));
-    ui->att->setNum(team->teamAttack(container->teams[id].getPlayer(), formation_color));
+    ui->def->setNum(team->teamDefence(container->teams[id].getPlayer(), idFormation));        // formation_color odpowiada rodzajowi formacji
+    ui->mid->setNum(team->teamMidfield(container->teams[id].getPlayer(), idFormation));
+    ui->att->setNum(team->teamAttack(container->teams[id].getPlayer(), idFormation));
     ui->spd->setNum(team->teamSpeed(container->teams[id].getPlayer()));
     ui->tech->setNum(team->teamTechnick(container->teams[id].getPlayer()));
-    ui->defensive->setNum(team->teamDefensive(container->teams[id].getPlayer(), formation_color));
-    ui->offensive->setNum(team->teamOffensive(container->teams[id].getPlayer(), formation_color));
-    container->teams[id].setFormation(formation_color);
+    ui->defensive->setNum(team->teamDefensive(container->teams[id].getPlayer(), idFormation));
+    ui->offensive->setNum(team->teamOffensive(container->teams[id].getPlayer(), idFormation));
+    container->teams[id].setFormation(idFormation);
 
-    ui->str_2->setNum(team->teamStrengthEnergy(container->teams[id].getPlayer(), formation_color));
+    ui->str_2->setNum(team->teamStrengthEnergy(container->teams[id].getPlayer(), idFormation));
     ui->gk_2->setNum(team->teamGoalkeeperEnergy(container->teams[id].getPlayer()));
-    ui->def_2->setNum(team->teamDefenceEnergy(container->teams[id].getPlayer(), formation_color));
-    ui->mid_2->setNum(team->teamMidfieldEnergy(container->teams[id].getPlayer(), formation_color));
-    ui->att_2->setNum(team->teamAttackEnergy(container->teams[id].getPlayer(), formation_color));
+    ui->def_2->setNum(team->teamDefenceEnergy(container->teams[id].getPlayer(), idFormation));
+    ui->mid_2->setNum(team->teamMidfieldEnergy(container->teams[id].getPlayer(), idFormation));
+    ui->att_2->setNum(team->teamAttackEnergy(container->teams[id].getPlayer(), idFormation));
     ui->spd_2->setNum(team->teamSpeedEnergy(container->teams[id].getPlayer()));
     ui->tech_2->setNum(team->teamTechnickEnergy(container->teams[id].getPlayer()));
-    ui->defensive_2->setNum(team->teamDefensiveEnergy(container->teams[id].getPlayer(), formation_color));
-    ui->offensive_2->setNum(team->teamOffensiveEnergy(container->teams[id].getPlayer(), formation_color));
+    ui->defensive_2->setNum(team->teamDefensiveEnergy(container->teams[id].getPlayer(), idFormation));
+    ui->offensive_2->setNum(team->teamOffensiveEnergy(container->teams[id].getPlayer(), idFormation));
 
-    container->teams[id].setFormation(formation_color);
+    container->teams[id].setFormation(idFormation);
 
     ui->teamenergy->setValue(team->teamEnergy(container->teams[id].getPlayer()));
 
@@ -313,8 +313,8 @@ void ShowSquads::personalData()
     ui->name->setText(container->teams[id].getPlayer()[index].getFname());
     ui->surname->setText(container->teams[id].getPlayer()[index].getLname());
     ui->position->setText(container->teams[id].getPlayer()[index].getPosition());
-    ui->skils->setText(QString::number(container->teams[id].getPlayer()[index].getOverall(index, formation_color)));
-    ui->powerskils->setText(QString::number(container->teams[id].getPlayer()[index].getEnergyOverall(index, formation_color)));
+    ui->skils->setText(QString::number(container->teams[id].getPlayer()[index].getOverall(index, idFormation)));
+    ui->powerskils->setText(QString::number(container->teams[id].getPlayer()[index].getEnergyOverall(index, idFormation)));
     ui->goals->setText(QString::number(container->teams[id].getPlayer()[index].getGoals()));
     ui->energy->setValue(container->teams[id].getPlayer()[index].getStamina());
 }

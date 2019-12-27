@@ -91,10 +91,7 @@ void ShowTeamStats::showStats()
     ui->overallProgress->setValue(team->teamStrengthEnergy(container->teams[id].getPlayer(), container->teams[id].getFormation()));
 }
 
-void ShowTeamStats::table()
-{
 
-}
 
 
 

@@ -41,7 +41,7 @@ private slots:
 
 private:
     Ui::MainMenu *ui;
-    ChoseTeam *choseTeam;
+    ChoseTeam choseTeam;
     GameDialog *gameDialog;
     UserDataDialog *userDataDialog;
     QMediaPlayer music;  

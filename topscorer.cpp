@@ -61,7 +61,7 @@ void TopScorer::table()
 
     //std::random_shuffle(top_scorer.begin(), top_scorer.end());
 
-    int count = std::count_if(top_scorer.begin(), top_scorer.end(), Predicat);
+    int count = std::count_if(top_scorer.begin(), top_scorer.end(), findeScorer);
 
    /* int count = std::count_if(top_scorer.begin(), top_scorer.end(), [](const Player &p)
                                                                         {if(p.getGoals() > 0)
@@ -138,7 +138,7 @@ void TopScorer::on_stats_clicked()
     TopScorer::close();
 }
 
-int Predicat(const Player &p)
+int findeScorer(const Player &p)
 {
     if(p.getGoals() > 0)
         return p.getGoals();

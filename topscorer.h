@@ -31,6 +31,6 @@ private:
     };
 };
 
-int Predicat(const Player &p);
+int findeScorer(const Player &p);
 
 #endif // TOPSCORER_H

@@ -150,7 +150,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="remove">
    <property name="geometry">
     <rect>
      <x>1250</x>

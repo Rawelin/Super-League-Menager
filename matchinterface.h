@@ -25,11 +25,11 @@ public:
     explicit MatchInterface(QDialog *parent = 0);
     ~MatchInterface();
     void setGraphics();
+    void setting();
     void setData(int, int,  QLabel *, QLabel *, QListWidget *, QListWidget *);
     void confrontation(int, int);
 
 private slots:
-    void setting();
     void on_back_clicked();
     void on_play_clicked();
 

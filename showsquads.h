@@ -24,7 +24,7 @@ public:
     ~ShowSquads();
     void setGraphic();
     void squad();
-    void formationColor(int formation);
+    void formationId(int formation);
     void updateTeamStats();
 
 
@@ -44,7 +44,7 @@ private:
         GK, DEF, MID, ATT, TACKLE, TECHNIK, SHOT,
         PASS, HEAD, SPEED, ENDURANCE, STAMINA, OVERALL, GOALS
     };
-    int formation_color;
+    int idFormation;
     int id;
     int index;
 
