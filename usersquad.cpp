@@ -84,8 +84,6 @@ void UserSquad::setGraphic()
                   "QHeaderView {background-color: transparent;}"
                   "QTableCornerButton::section {background-color: transparent;}");
 
-
-    ui->back->setStyleSheet("background-color: rgba(255, 255, 255, 10);");
     ui->form1->setStyleSheet("background-color: rgba(255, 255, 255, 30);");
     ui->form2->setStyleSheet("background-color: rgba(255, 255, 255, 30);");
     ui->form3->setStyleSheet("background-color: rgba(255, 255, 255, 30);");

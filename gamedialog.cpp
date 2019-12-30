@@ -16,7 +16,6 @@ GameDialog::GameDialog(QWidget *parent) :
     mouseTracking();
     setIco();
 
-    //container->music_player->setPlayer();
     ui->progressBar->setValue(container->musicPlayer->getVolume());
 
     connect(ui->start, SIGNAL(clicked(bool)), this, SLOT(start()));
@@ -28,6 +27,8 @@ GameDialog::GameDialog(QWidget *parent) :
     connect(ui->down, SIGNAL(clicked(bool)), this, SLOT(volumeDown()));
 
     connect(this, SIGNAL(hovered()), this, SLOT(highLight()));
+
+
 
 }
 
@@ -51,6 +52,8 @@ void GameDialog::setIco()
     container->functions->setIcon(container->setMultimedia->getButtons(6), ui->up, "Podgłośnij");
 
 
+    ui->gameMenu->setVisible(false);
+
     QString semitransparent = "background-color: rgba(255, 255, 255, 70);";
     QString transparent = "background-color: rgba(255, 255, 255, 0);";
 
@@ -64,6 +67,7 @@ void GameDialog::setIco()
     ui->fixture->setStyleSheet(semitransparent);
     ui->save->setStyleSheet(semitransparent);
     ui->load->setStyleSheet(semitransparent);
+    ui->gameMenu->setStyleSheet(semitransparent);
 
    // ui->progressBar->setStyleSheet("background-color: rgba(0, 0, 0, 10);");
 
@@ -87,7 +91,7 @@ void GameDialog::setIco()
     ui->mainmenu->setToolTip("Wyjscie do main menu");
     ui->exit->setToolTip("Wyjście z gry");
     ui->stats->setToolTip("Statystyki zespołów");
-
+    ui->gameMenu->setToolTip("Powrót do menu gry");
 }
 
 void GameDialog::mouseTracking()
@@ -104,6 +108,7 @@ void GameDialog::mouseTracking()
     ui->stats->setMouseTracking(true);
     ui->save->setMouseTracking(true);
     ui->load->setMouseTracking(true);
+    ui->gameMenu->setMouseTracking(true);
 
     ui->start->setMouseTracking(true);
     ui->stop->setMouseTracking(true);
@@ -114,53 +119,96 @@ void GameDialog::mouseTracking()
     ui->down->setMouseTracking(true);
 }
 
+void GameDialog::addWidgets()
+{
+    if(widgetsAdded)
+    {
+        ui->stackedWidget->insertWidget(1, new Table());
+        ui->stackedWidget->insertWidget(2, new UserSquad());
+        ui->stackedWidget->insertWidget(3, new SelectShowSquad());
+        ui->stackedWidget->insertWidget(4, new Data());
+        ui->stackedWidget->insertWidget(5, new Fixture());
+        ui->stackedWidget->insertWidget(6, new Match());
+
+        widgetsAdded = false;
+    }
+}
+
 void GameDialog::on_table_clicked()
 {
     //container->functions->delay(100);
     //Table table(this);
     //table.exec();
 
-    table = new Table();
-    ui->stackedWidget->insertWidget(1, table);
+    //table = new Table();
+
+
+    addWidgets();
     ui->stackedWidget->setCurrentIndex(1);
 }
 
 void GameDialog::on_squad_clicked()
 {
-    container->functions->delay(100);
-    UserSquad usersquad(0, false);
-    usersquad.exec();
+//    container->functions->delay(100);
+//    UserSquad usersquad(0, false);
+//    usersquad.exec();
+
+    ui->gameMenu->setVisible(true);
+    ui->stats->setVisible(false);
+    ui->fixture->setVisible(false);
+    ui->load->setVisible(false);
+    ui->mainmenu->setVisible(false);
+    ui->exit->setVisible(false);
+
+    addWidgets();
+    ui->stackedWidget->setCurrentIndex(2);
 }
 
 void GameDialog::on_exit_clicked()
 {
-    container->musicPlayer->stop();
-     QApplication::quit();
+//    container->musicPlayer->stop();
+//    QApplication::quit();
   //  GameDialog::close();
+
+    emit exitClicked();
 }
 
 void GameDialog::on_teams_clicked()
 {
-    SelectShowSquad selectshowsquad;
-    selectshowsquad.exec();
+//    SelectShowSquad selectshowsquad;
+//    selectshowsquad.exec();
+    addWidgets();
+    ui->stackedWidget->setCurrentIndex(3);
 }
 
 void GameDialog::on_stats_clicked()
 {
-    Data data;
-    data.exec();
+//    Data data;
+//    data.exec();
+     addWidgets();
+     ui->stackedWidget->setCurrentIndex(4);
 }
 
 void GameDialog::on_fixture_clicked()
 {
-    Fixture fixture;
-    fixture.exec();
+//    Fixture fixture;
+//    fixture.exec();
+     addWidgets();
+     ui->stackedWidget->setCurrentIndex(5);
 }
 
 void GameDialog::on_nextday_clicked()
 {
-    Match match(this);
-    match.exec();
+//    Match match(this);
+//    match.exec();
+
+     addWidgets();
+     ui->stackedWidget->setCurrentIndex(6);
+     ui->stats->setVisible(false);
+     ui->fixture->setVisible(false);
+     ui->load->setVisible(false);
+     ui->mainmenu->setVisible(false);
+     ui->exit->setVisible(false);
 }
 
 void GameDialog::on_mainmenu_clicked()
@@ -231,6 +279,7 @@ void GameDialog::highLight()
     QRect fixture = ui->fixture->geometry();
     QRect save = ui->save->geometry();
     QRect load = ui->load->geometry();
+    QRect gameMenu = ui->gameMenu->geometry();
 
     QRect forward = ui->forward->geometry();
     QRect previous = ui->previous->geometry();
@@ -253,6 +302,7 @@ void GameDialog::highLight()
     container->functions->setHighLight(fixture, ui->fixture, highlight, normal);
     container->functions->setHighLight(save, ui->save, highlight, normal);
     container->functions->setHighLight(load, ui->load, highlight, normal);
+    container->functions->setHighLight(gameMenu, ui->gameMenu, highlight, normal);
     container->functions->setHighLight(forward, ui->forward, highlight, normal);
     container->functions->setHighLight(previous, ui->previous, highlight, normal);
     container->functions->setHighLight(start, ui->start, highlight, normal);
@@ -284,3 +334,13 @@ void GameDialog::on_load_clicked()
     container->loadData();
 }
 
+
+void GameDialog::on_gameMenu_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(0);
+     ui->stats->setVisible(true);
+     ui->fixture->setVisible(true);
+     ui->load->setVisible(true);
+     ui->mainmenu->setVisible(true);
+     ui->exit->setVisible(true);
+}

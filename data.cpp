@@ -23,10 +23,8 @@ void Data::setGraphics()
     palette.setBrush(QPalette::Background,*(new QBrush(*(new QPixmap("Background/back2.jpg")))));
     setPalette(palette);
 
-    ui->back->setStyleSheet("background-color: rgba(255, 255, 255, 10);");
     ui->topscorers->setStyleSheet("background-color: rgba(255, 255, 255, 30);");
     ui->stats->setStyleSheet("background-color: rgba(255, 255, 255, 30);");
-
 }
 
 void Data::on_back_clicked()

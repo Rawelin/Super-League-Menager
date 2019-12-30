@@ -32,7 +32,6 @@ void Match::setGraphic()
     date.setDate(container->league->getYear(),container->league->getMonth(),container->league->getDay());
     ui->calendarWidget->setSelectedDate(date);
 
-     ui->back->setStyleSheet("background-color: rgba(255, 255, 255, 10);");
      ui->nextday->setStyleSheet("background-color: rgba(255, 255, 255, 30);");
 
      ui->frame->setStyleSheet("background-color: rgba(255, 255, 255, 10);");

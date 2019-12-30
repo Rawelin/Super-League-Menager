@@ -42,7 +42,7 @@ MainMenu::MainMenu(QWidget *parent) :
     connect(userDataDialog, SIGNAL(dialogClicked()), this, SLOT(bakToChoseTeam()));
     connect(userDataDialog, SIGNAL(dialogClickedGo()), this, SLOT(goToGameDialog()));
     connect(gameDialog, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
-
+    connect(gameDialog, SIGNAL(exitClicked()), this, SLOT(on_quit_clicked()));
     connect(this, SIGNAL(hovered()),this, SLOT(highLight()));
 }
 
@@ -181,6 +181,8 @@ void MainMenu::on_quit_clicked()
 void MainMenu::on_load_clicked()
 {
     container->musicPlayer->stop();
+    container->musicPlayer->setTrack(0);
+    container->musicPlayer->start();
     container->loadData();
 
     ui->option->setVisible(false);

@@ -25,8 +25,6 @@ void SelectShowSquad::setImages()
     palette.setBrush(QPalette::Background,*(new QBrush(*(new QPixmap("Background/back2.jpg")))));
     setPalette(palette);
 
-    ui->back->setStyleSheet("background-color: rgba(255, 255, 255, 10);");
-
     buttons << ui->jagielonia << ui->lech << ui->legia << ui->wisla << ui->ruch << ui->slask << ui->lechia << ui->gornik_leczna
             << ui->piast << ui->arka << ui->cracovia << ui->termalica << ui->korona << ui->pogon << ui->wisla_plock << ui->zaglebie;
 

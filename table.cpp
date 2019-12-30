@@ -41,8 +41,6 @@ void Table::setGraphic()
 
     ui->tableWidget->horizontalHeader()->setStyleSheet("color: white");
     ui->tableWidget->verticalHeader()->setStyleSheet("color: white");
-    ui->powrot->setStyleSheet("background-color: rgba(255, 255, 255, 10);");
-    ui->frame->setStyleSheet("background-color: rgba(255, 255, 255, 0);");
 }
 
 void Table::table()

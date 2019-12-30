@@ -1151,6 +1151,85 @@
     <bool>false</bool>
    </property>
   </widget>
+  <widget class="QPushButton" name="gameMenu">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>10</y>
+     <width>150</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>60</height>
+    </size>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>120</red>
+         <green>120</green>
+         <blue>120</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="font">
+    <font>
+     <family>Nyala</family>
+     <pointsize>16</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>&lt;&lt;</string>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

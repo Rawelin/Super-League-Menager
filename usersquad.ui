@@ -23,7 +23,7 @@
    <property name="geometry">
     <rect>
      <x>1650</x>
-     <y>240</y>
+     <y>303</y>
      <width>200</width>
      <height>50</height>
     </rect>
@@ -81,7 +81,7 @@
    <property name="geometry">
     <rect>
      <x>1650</x>
-     <y>120</y>
+     <y>183</y>
      <width>200</width>
      <height>50</height>
     </rect>
@@ -145,7 +145,7 @@
    <property name="geometry">
     <rect>
      <x>1650</x>
-     <y>180</y>
+     <y>243</y>
      <width>200</width>
      <height>50</height>
     </rect>
@@ -206,7 +206,7 @@
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>101</y>
+     <y>164</y>
      <width>641</width>
      <height>871</height>
     </rect>
@@ -353,7 +353,7 @@
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>47</y>
+     <y>110</y>
      <width>461</width>
      <height>31</height>
     </rect>
@@ -376,79 +376,6 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="back">
-   <property name="geometry">
-    <rect>
-     <x>1540</x>
-     <y>980</y>
-     <width>300</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>300</width>
-     <height>60</height>
-    </size>
-   </property>
-   <property name="palette">
-    <palette>
-     <active>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </active>
-     <inactive>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </inactive>
-     <disabled>
-      <colorrole role="ButtonText">
-       <brush brushstyle="SolidPattern">
-        <color alpha="255">
-         <red>120</red>
-         <green>120</green>
-         <blue>120</blue>
-        </color>
-       </brush>
-      </colorrole>
-     </disabled>
-    </palette>
-   </property>
-   <property name="font">
-    <font>
-     <family>Nyala</family>
-     <pointsize>16</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::StrongFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>MENU</string>
-   </property>
-   <property name="default">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QFrame" name="frame">
    <property name="enabled">
     <bool>true</bool>
@@ -456,7 +383,7 @@
    <property name="geometry">
     <rect>
      <x>1090</x>
-     <y>500</y>
+     <y>563</y>
      <width>231</width>
      <height>321</height>
     </rect>
@@ -503,7 +430,7 @@
    <property name="geometry">
     <rect>
      <x>1650</x>
-     <y>440</y>
+     <y>503</y>
      <width>200</width>
      <height>50</height>
     </rect>
@@ -635,7 +562,7 @@
    <property name="geometry">
     <rect>
      <x>1820</x>
-     <y>500</y>
+     <y>563</y>
      <width>31</width>
      <height>321</height>
     </rect>
@@ -834,7 +761,7 @@
    <property name="geometry">
     <rect>
      <x>1650</x>
-     <y>380</y>
+     <y>443</y>
      <width>200</width>
      <height>50</height>
     </rect>
@@ -1020,7 +947,7 @@
    <property name="geometry">
     <rect>
      <x>1090</x>
-     <y>120</y>
+     <y>183</y>
      <width>544</width>
      <height>371</height>
     </rect>
@@ -2147,7 +2074,7 @@
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>17</y>
+     <y>80</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -2163,7 +2090,7 @@
    <property name="geometry">
     <rect>
      <x>950</x>
-     <y>17</y>
+     <y>80</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -2179,7 +2106,7 @@
    <property name="geometry">
     <rect>
      <x>1090</x>
-     <y>30</y>
+     <y>93</y>
      <width>544</width>
      <height>80</height>
     </rect>
@@ -2283,7 +2210,7 @@
    <property name="geometry">
     <rect>
      <x>1330</x>
-     <y>500</y>
+     <y>563</y>
      <width>221</width>
      <height>321</height>
     </rect>
@@ -2979,7 +2906,7 @@
    <property name="geometry">
     <rect>
      <x>730</x>
-     <y>120</y>
+     <y>183</y>
      <width>351</width>
      <height>701</height>
     </rect>
@@ -6034,7 +5961,7 @@
    <property name="geometry">
     <rect>
      <x>1556</x>
-     <y>500</y>
+     <y>563</y>
      <width>251</width>
      <height>321</height>
     </rect>
