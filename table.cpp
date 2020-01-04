@@ -45,9 +45,9 @@ void Table::setGraphic()
 
 void Table::table()
 {
-   QList<Team>temporaryTeams;
 
-   temporaryTeams = container->teams;
+
+   QList<Team> temporaryTeams =  container->teams;
 //   qSort(temporaryTeams.begin(), temporaryTeams.end(), [](const Team &t1, const Team &t2)->bool{
 //                                       return ((t1.getPoint() > t2.getPoint()) ||
 //                                       (t1.getPoint() == t2.getPoint() && t1.getDiffer() > t2.getDiffer()) ||

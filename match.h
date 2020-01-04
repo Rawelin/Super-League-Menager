@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "matchinterface.h"
+#include "table.h"
 
 namespace Ui {
 class Match;

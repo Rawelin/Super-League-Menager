@@ -99,7 +99,6 @@ void Match::on_nextday_clicked()
          team.clearTeamStats(container->teams);
     }
 
-
     if(container->league->getDays() == 364)                               // resetowanie kolejek
     {
         container->league->setDays(0);
@@ -108,6 +107,9 @@ void Match::on_nextday_clicked()
 
     for(int i = 0; i < container->teams.size(); i++)                     // regenerownie zawodnikow
         player->playerRecovery(container->teams[i].getPlayer());
+
+    container->stackedWidgeClear = false;
+    container->loadWidgetAdded = false;
 
     if(container->league->getDays() == container->league->getMatchDay())
     {
@@ -119,7 +121,6 @@ void Match::on_nextday_clicked()
            container->musicPlayer->smoothVolumeDown();
 
            MatchInterface matchinterface(this);
-
            matchinterface.exec();
 
            container->league->setFixture();
@@ -128,8 +129,6 @@ void Match::on_nextday_clicked()
        }
 
        ui->nextday->setEnabled(true);
-
-
     }
     setting();
 

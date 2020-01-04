@@ -9,23 +9,16 @@ MainMenu::MainMenu(QWidget *parent) :
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
-    //ui->stackedWidget->insertWidget(0, choseteam);
 
-     this->showFullScreen();
+    this->showFullScreen();
+    mouseTracking();
 
-     mouseTracking();
-
-     setGraphics();
-
-
-    //setWindowFlags(Qt::WindowTitleHint);
-    //setWindowFlags(Qt::FramelessWindowHint);
+    setGraphics();
 
     container->musicPlayer->setPlayer();
     container->musicPlayer->setTrack(1);
     container->musicPlayer->start();
 
-//    choseTeam = new ChoseTeam(this);
     userDataDialog = new UserDataDialog();
     gameDialog = new GameDialog();
     
@@ -35,9 +28,6 @@ MainMenu::MainMenu(QWidget *parent) :
     ui->stackedWidget->insertWidget(4, userDataDialog);
     ui->stackedWidget->insertWidget(5, gameDialog);
 
-    //connect(&about, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
-   // connect(&options, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
-   // connect(choseTeam, SIGNAL(dialogClicked()), this, SLOT(bakToMainMenu()));
     connect(&choseTeam, SIGNAL(dialogClickedGo()), this, SLOT(goToUserDataDialog()));
     connect(userDataDialog, SIGNAL(dialogClicked()), this, SLOT(bakToChoseTeam()));
     connect(userDataDialog, SIGNAL(dialogClickedGo()), this, SLOT(goToGameDialog()));
@@ -248,6 +238,7 @@ void MainMenu::goToUserDataDialog()
 {
     ui->stackedWidget->setCurrentIndex(4);
 }
+
 
 
 

@@ -57,6 +57,9 @@ public:
     Hovered *hovered;
     Formations *formations;
     SetMultimedia *setMultimedia;
+    bool stackedWidgeClear;
+    bool widgetAdded;
+    bool loadWidgetAdded;
 
     void loadDefaultData();
     void saveData();

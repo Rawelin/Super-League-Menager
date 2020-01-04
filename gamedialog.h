@@ -33,6 +33,8 @@ public:
     void setIco();
     void mouseTracking();
     void addWidgets();
+    void insertWidgets();
+    void removeWidgets();
 
 private slots:
     void on_table_clicked();
@@ -55,11 +57,8 @@ private slots:
     void volumeDown();
     void highLight();
 
-
-
 private:
     Ui::GameDialog *ui;
-    bool widgetsAdded;
 
 protected:
      void mouseMoveEvent(QMouseEvent *event);
@@ -70,7 +69,6 @@ public: Q_SIGNALS:
 signals:
     void dialogClicked();
     void exitClicked();
-
 };
 
 #endif // GAMEDIALOG_H

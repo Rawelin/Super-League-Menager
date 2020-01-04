@@ -27,9 +27,6 @@ GameDialog::GameDialog(QWidget *parent) :
     connect(ui->down, SIGNAL(clicked(bool)), this, SLOT(volumeDown()));
 
     connect(this, SIGNAL(hovered()), this, SLOT(highLight()));
-
-
-
 }
 
 GameDialog::~GameDialog()
@@ -121,16 +118,19 @@ void GameDialog::mouseTracking()
 
 void GameDialog::addWidgets()
 {
-    if(widgetsAdded)
-    {
-        ui->stackedWidget->insertWidget(1, new Table());
-        ui->stackedWidget->insertWidget(2, new UserSquad());
-        ui->stackedWidget->insertWidget(3, new SelectShowSquad());
-        ui->stackedWidget->insertWidget(4, new Data());
-        ui->stackedWidget->insertWidget(5, new Fixture());
-        ui->stackedWidget->insertWidget(6, new Match());
 
-        widgetsAdded = false;
+    if(!container->widgetAdded)
+    {
+        insertWidgets();
+        container->widgetAdded = true;
+    }
+
+    if(!container->stackedWidgeClear)
+    {
+
+        removeWidgets();
+        insertWidgets();
+        container->stackedWidgeClear = true;
     }
 }
 
@@ -141,8 +141,6 @@ void GameDialog::on_table_clicked()
     //table.exec();
 
     //table = new Table();
-
-
     addWidgets();
     ui->stackedWidget->setCurrentIndex(1);
 }
@@ -213,6 +211,8 @@ void GameDialog::on_nextday_clicked()
 
 void GameDialog::on_mainmenu_clicked()
 {
+
+    ui->stackedWidget->setCurrentIndex(0);
     container->musicPlayer->stop();
    // container->memeoryHarvester();
     container->loadDefaultData();
@@ -220,6 +220,9 @@ void GameDialog::on_mainmenu_clicked()
    // MainMenu mainmenu;
    // GameDialog::close();
    // mainmenu.exec();
+
+    container->widgetAdded = false;
+    container->loadWidgetAdded = false;
 
     emit dialogClicked();
 }
@@ -331,9 +334,18 @@ void GameDialog::on_save_clicked()
 
 void GameDialog::on_load_clicked()
 {
-    container->loadData();
-}
+    if(!container->loadWidgetAdded)
+    {
+        container->loadData();
 
+       removeWidgets();
+       insertWidgets();
+
+       container->loadWidgetAdded = true;
+
+       ui->stackedWidget->setCurrentIndex(0);
+    }
+}
 
 void GameDialog::on_gameMenu_clicked()
 {
@@ -343,4 +355,31 @@ void GameDialog::on_gameMenu_clicked()
      ui->load->setVisible(true);
      ui->mainmenu->setVisible(true);
      ui->exit->setVisible(true);
+}
+
+void GameDialog::insertWidgets()
+{
+    ui->stackedWidget->insertWidget(1, new Table());
+    ui->stackedWidget->insertWidget(2, new UserSquad());
+    ui->stackedWidget->insertWidget(3, new SelectShowSquad());
+    ui->stackedWidget->insertWidget(4, new Data());
+    ui->stackedWidget->insertWidget(5, new Fixture());
+    ui->stackedWidget->insertWidget(6, new Match());
+}
+
+void GameDialog::removeWidgets()
+{
+    QWidget *widget1 =  ui->stackedWidget->widget(1);
+    widget1->deleteLater();
+    QWidget *widget2 =  ui->stackedWidget->widget(2);
+    widget2->deleteLater();
+    QWidget *widget3 =  ui->stackedWidget->widget(3);
+    widget3->deleteLater();
+    QWidget *widget4 =  ui->stackedWidget->widget(4);
+    widget4->deleteLater();
+    QWidget *widget5 =  ui->stackedWidget->widget(5);
+    widget5->deleteLater();
+    QWidget *widget6 =  ui->stackedWidget->widget(6);
+    widget6->deleteLater();
+
 }
